@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: smiles-web-service
+spec:
+  selector:
+    app: smiles-web
+  ports:
+  - port: 3000
+    targetPort: 3000

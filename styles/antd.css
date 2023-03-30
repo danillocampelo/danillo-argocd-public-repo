@@ -1,0 +1,43 @@
+.ant-form-item-row {
+  @apply flex flex-col !important;
+}
+
+.ant-form-item-label  {
+  @apply text-start text-caption font-bold mb-3 !important;
+}
+
+.ant-form-item-label > label {
+  @apply w-full justify-between !important;
+}
+
+.ant-form-item-label > label::after {
+  @apply hidden !important;
+}
+
+.ant-form-item-control {
+  @apply min-h-min !important;
+}
+
+.ant-form-item-tooltip {
+  @apply text-h5-mobile text-black !important;
+}
+
+.ant-tooltip-inner {
+  @apply text-tag tracking-normal font-normal normal-case bg-gray-90 text-white rounded-sm px-4 py-3 !important;
+}
+
+.ant-notification-notice {
+  @apply bg-gray-90 rounded-sm !important;
+}
+
+.ant-notification-notice-message, .ant-notification-notice-description {
+  @apply text-white text-caption !important;
+}
+
+.ant-notification-notice-close {
+  @apply text-white !important;
+}
+
+.ant-picker-clear {
+  transform: translate(-200%, -50%) !important;
+}

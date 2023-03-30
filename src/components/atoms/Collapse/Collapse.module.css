@@ -1,0 +1,14 @@
+.custom-collapse :global .ant-collapse-content-box {
+  padding: 0 !important;
+}
+
+.custom-collapse :global .ant-collapse-header {
+  padding: 0 !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 1rem !important;
+  align-items: center !important;
+}
+
+.custom-collapse :global .ant-collapse-content, .custom-collapse :global .ant-collapse-item {
+  border: 0 !important;
+}

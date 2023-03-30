@@ -1,0 +1,27 @@
+{
+  "order-details": "Detalhes do pedido",
+  "nights": "noites",
+  "passengers": "Pessoas",
+  "flights": "Vôos",
+  "outbound": "Ida",
+  "return": "Volta",
+  "adult": "Adulto",
+  "child": "Criança",
+  "baby": "Bebê",
+  "payment": "Pagamento",
+  "order-status": {
+    "AUTHORIZED": "Aprovado",
+    "CAPTURED": "Aprovado",
+    "ANALYZING": "Em análise",
+    "PENDING": "Pendente",
+    "RECURRENT": "Recorrente",
+    "DENIED": "Negado",
+    "CANCELED": "Cancelado"
+  },
+  "order-not-found": "Pedido não encontrado",
+  "guests": "Hóspedes",
+  "more-info": "Mais informações",
+  "accommodations": "Acomodações",
+  "stay": "Hospedagem",
+  "stars": "Estrelas"
+}

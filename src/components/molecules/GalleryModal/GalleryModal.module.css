@@ -1,0 +1,9 @@
+.custom-gallery :global .ant-modal-content {
+  border-radius: 0 !important;
+  padding: 0;
+  height: 100%;
+}
+
+.custom-gallery :global .ant-modal-body, .custom-gallery :global .ant-modal-content span, .custom-gallery :global .ant-modal-body, .custom-gallery :global .ant-modal-body div {
+  height: 100% !important;
+}

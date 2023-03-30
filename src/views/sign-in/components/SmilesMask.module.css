@@ -1,0 +1,13 @@
+.smiles-mask-image {
+  mask-image: url('/assets/icons/SmilesViagens.svg');
+  mask-size: 1675px;
+  mask-position: 26% 14%;
+}
+
+@media (min-width: 768px) {
+  .smiles-mask-image {
+    mask-image: url('/assets/icons/SmilesViagens.svg');
+    mask-size: 440%;
+    mask-position: 36% 23%;
+  }
+}

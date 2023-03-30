@@ -1,0 +1,12 @@
+.custom-select :global .ant-select-selector {
+  border-radius: 0;
+  border-width: 2px !important;
+  height: 4rem !important;
+  padding: 0 1.5rem !important;
+  align-items: center;
+}
+
+.custom-select :global .ant-select-selection-search-input {
+  height: 100% !important;
+  padding: 0 0.8rem !important;
+}

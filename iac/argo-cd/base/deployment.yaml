@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smiles-web
+spec:
+  selector:
+    matchLabels:
+      app: smiles-web
+  template:
+    metadata:
+      labels:
+        app: smiles-web
+    spec:
+      imagePullSecrets:
+      - name: artifact-registry
+      containers:
+      - name: smiles-web
+        image: smiles-web
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: nextjs-app-config
+          mountPath: "/app/.env.local"
+          subPath: ".env.local"
+          readOnly: true
+      volumes:
+      - name: nextjs-app-config
+        configMap:
+          name: nextjs-app-config

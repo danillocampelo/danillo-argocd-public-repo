@@ -1,0 +1,5 @@
+export { CheckoutFlights } from './Flights'
+export { OriginAccommodation } from './origin-accommodation/OriginAccommodation'
+export { CheckoutReview } from './Review'
+export { CheckoutRoadmap } from './Roadmap'
+export { CheckoutRooms } from './Rooms'

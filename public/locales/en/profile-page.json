@@ -1,0 +1,88 @@
+{
+  "back-in-home-desktop": "Back to top of site",
+  "back-in-home-mobile": "Back",
+  "leave-button-desktop": "Sign out of account",
+  "leave-button-mobile": "Leave",
+  "personal-data": "Personal data",
+  "address": "Address",
+  "save-button": "Save",
+  "subtitle": "Keep your profile up to date",
+  "edit-profile": "Edit profile",
+  "logout": "Logout",
+  "menu-profile": [
+    {
+      "menuTitle": "Personal data"
+    },
+    {
+      "menuTitle": "My travels"
+    }
+  ],
+  "nav-items": [
+    {
+      "personal-data": "Personal data"
+    },
+    {
+      "my-shopping": "My travels"
+    }
+  ],
+  "personal-data-inputs": {
+    "name": {
+      "label": "Full name",
+      "placeholder": "Enter your full name"
+    },
+    "dateNasc": {
+      "label": "Birth date",
+      "placeholder": "DD/MM/AAAA"
+    },
+    "rg": {
+      "label": "RG",
+      "placeholder": "0000000000-00"
+    },
+    "cpf": {
+      "label": "CPF",
+      "placeholder": "000.000.000-00"
+    },
+    "tell": {
+      "label": "Telephone",
+      "placeholder": "Enter area code + mobile number"
+    }
+  },
+
+  "address-input": {
+    "address": {
+      "label": "Address",
+      "placeholder": "Street"
+    },
+    "number": {
+      "label": "Number",
+      "placeholder": "Inform the number"
+    },
+    "complement": {
+      "label": "Complement",
+      "placeholder": "Inform the complement (house/block/floor)"
+    },
+    "district": {
+      "label": "District",
+      "placeholder": "Inform your neighborhood"
+    },
+    "city": {
+      "label": "City",
+      "placeholder": "Select"
+    },
+    "state": {
+      "label": "State",
+      "placeholder": "Select"
+    }
+  },
+
+  "user-orders": {
+    "next-experiences": "Next experiences",
+    "previous-experiences": "Previous experiences",
+    "stay": "Stay",
+    "period": "Period",
+    "nights": "Nights",
+    "stars": "Stars",
+    "more-info": "More info",
+    "greeting": "Hello"
+  }
+}

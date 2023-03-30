@@ -1,0 +1,37 @@
+.adyen-checkout__button {
+  background-color: rgb(193 93 49) !important;
+  border-radius: 0 !important;
+}
+
+.adyen-checkout__label, .adyen-checkout__label__text, .adyen-checkout__label--focused .text-caption {
+  font-family: Oxygen, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  color: rgb(40 47 51) !important;
+  font-weight: 700 !important;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    letter-spacing: 0;
+}
+
+.adyen-checkout__input-wrapper {
+  border-radius: 0 !important;
+  border: 2px solid #d9d9d9 !important;
+  padding: 20px 24px !important;
+  background-color: #FFF !important;
+}
+
+.adyen-checkout__input-wrapper:has(> .adyen-checkout__input--focus, > .adyen-checkout__dropdown__button, > .adyen-checkout__input:focus, .adyen-checkout__dropdown > .adyen-checkout__dropdown__button--active) {
+  border: 2px solid rgb(193 93 49) !important;
+}
+
+.adyen-checkout__input, .adyen-checkout__dropdown__button, .adyen-checkout__input--text {
+  border: 0 !important;
+  caret-color: #d9d9d9 !important;
+}
+
+.adyen-checkout__input--valid, .adyen-checkout__input--text {
+  background-color: #FFF !important;
+}
+
+.adyen-checkout__input--focus, .adyen-checkout__input--focus:hover, .adyen-checkout__input:active, .adyen-checkout__input:active:hover, .adyen-checkout__input:focus, .adyen-checkout__input:focus:hover, .adyen-checkout__dropdown__button--active {
+  box-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
+}

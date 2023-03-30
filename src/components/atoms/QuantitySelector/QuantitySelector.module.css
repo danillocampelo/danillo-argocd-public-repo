@@ -1,0 +1,5 @@
+.custom-quantity-selector :global .ant-input-number-input {
+  @apply text-center;
+  @apply p-0;
+  @apply text-paragraph-medium;
+}

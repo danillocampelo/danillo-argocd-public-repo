@@ -1,0 +1,89 @@
+{
+  "back-in-home-desktop": "Voltar ao início do site",
+  "back-in-home-mobile": "Voltar",
+  "leave-button-desktop": "Sair da minha conta",
+  "leave-button-mobile": "Sair",
+  "personal-data": "Dados pessoais",
+  "address": "Endereço",
+  "save-button": "Salvar",
+  "subtitle": "Mantenha seu perfil sempre atualizado",
+  "edit-profile": "Editar Perfil",
+  "logout": "Logout",
+  "menu-profile": [
+    {
+      "menuTitle": "Dados pessoais"
+    },
+    {
+      "menuTitle": "Minhas Viagens"
+    }
+  ],
+  "nav-items": [
+    {
+      "personal-data": "Dados pessoais"
+    },
+    {
+      "my-shopping": "Minhas Viagens"
+    }
+  ],
+
+  "personal-data-inputs": {
+    "name": {
+      "label": "Nome Completo",
+      "placeholder": "Insira seu nome completo"
+    },
+    "dateNasc": {
+      "label": "Data de Nascimento",
+      "placeholder": "DD/MM/AAAA"
+    },
+    "rg": {
+      "label": "RG",
+      "placeholder": "0000000000-00"
+    },
+    "cpf": {
+      "label": "CPF",
+      "placeholder": "000.000.000-00"
+    },
+    "tell": {
+      "label": "Telefone",
+      "placeholder": "Insira o DDD + número do celular"
+    }
+  },
+
+  "address-input": {
+    "address": {
+      "label": "Endereço",
+      "placeholder": "Rua"
+    },
+    "number": {
+      "label": "Numero",
+      "placeholder": "Informe o número"
+    },
+    "complement": {
+      "label": "Complemento",
+      "placeholder": "Informe o complemento (casa/bloco/andar)"
+    },
+    "district": {
+      "label": "Bairro",
+      "placeholder": "Informe seu bairro"
+    },
+    "city": {
+      "label": "Cidade",
+      "placeholder": "Selecione"
+    },
+    "state": {
+      "label": "Estado",
+      "placeholder": "Selecione"
+    }
+  },
+
+  "user-orders": {
+    "next-experiences": "Próximas experiências",
+    "previous-experiences": "Experiências anteriores",
+    "stay": "Estadia",
+    "period": "Período",
+    "nights": "Noites",
+    "stars": "Estrelas",
+    "more-info": "Mais informações",
+    "greeting": "Olá"
+  }
+}

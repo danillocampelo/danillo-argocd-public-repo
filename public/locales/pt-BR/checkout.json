@@ -1,0 +1,187 @@
+{
+  "steps": {
+    "previous-step": "Passo anterior",
+    "next-step": "Próximo passo",
+    "origin-accommodation": "Origem e hospedagem",
+    "rooms": "Quartos",
+    "departure-flight": "Vôo de ida",
+    "return-flight": "Vôo de volta",
+    "itinerary": "Roteiro",
+    "people": "Pessoas",
+    "optional": "Opcionais",
+    "payment": "Pagamento",
+    "review": "Revisão",
+    "booked": "Reservado",
+    "missing-availability": "Não há disponibilidade para as opções selecionadas"
+  },
+  "other-options": "Outras opções",
+  "caption": "Valores adicionais podem ser incluídos",
+  "recommended": "Recomendado",
+  "remaining-only": "Restam apenas {{number}}",
+  "total-value": "Valor total",
+  "print-summary": "Imprimir resumo",
+  "searchBar": {
+    "title": "Informe seu local de origem",
+    "placeholder": "Insira a cidade de onde você vai sair",
+    "notFoundContent": "Nenhuma cidade encontrada",
+    "contentMinLength": "Digite ao menos 3 caracteres para buscar",
+    "label": "Local de partida",
+    "error": "Por favor, selecione um local de origem"
+  },
+  "roomSelection": {
+    "title": "Escolha seu {{count}}º quarto"
+  },
+  "roomQuantitySelection": {
+    "title": "Adicione os quartos",
+    "rooms": "Quartos",
+    "defineQuantity": "Defina a quantidade",
+    "room": "Quarto",
+    "adults": "Adultos",
+    "children": "Crianças",
+    "babies": "Bebês",
+    "adultsAge": "Acima de {{minYears}} anos",
+    "childrenAge": "De {{minYears}} a {{maxYears}} anos",
+    "babiesAge": "De {{minMonths}} a {{maxMonths}} meses",
+    "removeRoom": "Remover quarto",
+    "addedAriaLabel": "Adicionar 1 {{added}}",
+    "removedAriaLabel": "Remover 1 {{removed}}",
+    "quantityAriaLabel": "Total de {{quantity}} {{type}}"
+  },
+  "packageDates": {
+    "title": "Selecione o período da sua viagem",
+    "startDate": "Data de partida",
+    "endDate": "Data de retorno",
+    "error": "Por favor, selecione uma data de partida"
+  },
+  "accommodation": {
+    "title": "Escolha sua hospedagem",
+    "all-inclusive": "All Inclusive",
+    "refundable-tariff": "Tarifa reembolsável",
+    "select-dates": "Por favor, selecione a data de partida",
+    "check-in": "Check-in",
+    "check-out": "Check-out",
+    "cancel-policy": "Política de cancelamento",
+    "starting-at": "A partir de",
+    "more-info": "Mais informações",
+    "offers": "O que o local oferece"
+  },
+  "roadmap": {
+    "day": "Dia",
+    "title": "Confira o roteiro que preparamos para você",
+    "subtitle": "Todas as atividades estão incluídas na sua jornada",
+    "duration": "h de duração"
+  },
+  "flightSelection": {
+    "title": "Veja aqui o voo de ida recomendado pela Smiles Viagens",
+    "subtitle": "Opção com menor duração e sem escalas",
+    "flight": "Voo",
+    "operated-by": "Operado por",
+    "departure-ticket": "Passagem de ida",
+    "return-ticket": "Passagem de volta",
+    "duration": "Duração",
+    "direct": "Direto",
+    "stops": "paradas",
+    "benefits": "Benefícios",
+    "while-flight": "Durante o voo",
+    "of-increase": "de acréscimo",
+    "of-discount": "de desconto"
+  },
+  "people": {
+    "title": "Informe os dados dos viajantes",
+    "adult": "Adulto {{count}}",
+    "child": "Criança {{count}}",
+    "baby": "Bebê {{count}}",
+    "caption": "Será responsável pelo check-in e check-out na hospedagem",
+    "name": "Nome",
+    "insert-name": "Insira seu nome",
+    "name-required": "Por favor, informe o nome do viajante",
+    "lastname": "Último Sobrenome",
+    "insert-lastname": "Insira seu último sobrenome",
+    "lastname-required": "Por favor, informe último sobrenome do viajante",
+    "document": "Documento de identificação",
+    "document-tooltip": "Utilize o documento CPF para se identificar",
+    "birth-date": "Data de nascimento",
+    "birth-date-required": "Por favor, informe a data de nascimento do viajante"
+  },
+  "table": {
+    "review-title": "Verifique e confirme sua compra",
+    "booked-title": "Informações sobre a sua viagem",
+    "people": "Pessoas",
+    "flight": "Voo",
+    "itinerary": "Roteiro",
+    "additional-services": "Serviços adicionais",
+    "total-fees": "Total Taxas",
+    "amount": "Valor Total",
+    "cancellation-policy": "Política de cancelamento",
+    "operator": "Operadora",
+    "total-ticket-value": "Valor total das passagens",
+    "birth-in": "Nascimento em",
+    "earned-miles": "Você ganhou {{miles}} Milhas Smiles",
+    "accomodation-info": {
+      "refundable-fare": "Tarifa reembolsável",
+      "title": "Hospedagem",
+      "hotel": "Hotel",
+      "rooms-quantity": "N° de quartos",
+      "rooms-category": "Categoria de quartos",
+      "people-quantity": "N° de viajantes",
+      "price-per-person": "Preço por viajante",
+      "total-price": "Valor da hospedagem"
+    }
+  },
+  "booked": {
+    "order": "Pedido",
+    "title": "Parabéns pela compra!",
+    "message": "A partir de agora, você conta com o Personal Concierge Smiles Viagens para tudo que precisar. Se quiser tirar dúvidas ou solicitar qualquer tipo de suporte, basta acioná-lo via WhatsApp ou App",
+    "talk-to-concierge": "Falar com Concierge",
+    "travelers": "Viajantes",
+    "included-services": "Serviços inclusos no pacote",
+    "services": [
+      {
+        "title": "Check-in e embarque prioritários",
+        "icon": "airplane-ticket",
+        "description": "Passe direto pelas filas e embarque antes de todo mundo"
+      },
+      {
+        "title": "Personal Concierge",
+        "icon": "room-service",
+        "description": "Tenha todo o suporte para que a sua viagem seja do jeito que você planejou."
+      },
+      {
+        "title": "Venda consultiva especializada",
+        "icon": "handshake",
+        "description": "Conte com especialistas preparados para te conduzir à melhor experiência."
+      },
+      {
+        "title": "Acesso às salas VIP",
+        "icon": "chair",
+        "description": "Aproveite toda a comodidade, voando Gol no embarque internacional."
+      },
+      {
+        "title": "Bagagens gratuitas",
+        "icon": "redeem",
+        "description": "Despache gratuitamente a 1ª, 2ª e 3ª bagagens de até 23kg cada, em voos GOL"
+      },
+      {
+        "title": "Acumule milhas Smiles",
+        "icon": "check",
+        "description": "Acumule milhas comprando um pacote Smiles Viagens, e viaje cada vez mais"
+      },
+      {
+        "title": "Wifi no vôo",
+        "icon": "wifi",
+        "description": ""
+      },
+      {
+        "title": "Bagagem prioritária",
+        "icon": "room-service",
+        "description": ""
+      }
+    ]
+  },
+  "payment": {
+    "error": "Tente realizar novamente o pagamento"
+  },
+  "review": {
+    "error": "Ocorreu um erro em sua reserva, verifique a disponibilidade novamente."
+  }
+}

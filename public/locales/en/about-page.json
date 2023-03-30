@@ -1,0 +1,194 @@
+{
+  "change-your-experience": "We'll change the way you experience the world.",
+  "smiles-description": "We are a travel consulting and experience platform that believes in the personalization as an essential tool to provide you extraordinary moments.\n\n Our schedules are carefully elaborated through criterious curation, respecting your autonomy to create your own history, whatever the phase of live you're in, your dream or purpose.\n\n At Smiles Travels, you have access to exclusive services, high-end hotels, consultive selling and concierge support throughout the whole trip. All of this so that your next adventure can be the safest, most comfortable and mesmerizing as possible.",
+  "live": "live",
+  "unique-experiences": "Live the Smiles Travels exclusivity",
+  "schedule": "Carefuly elaborated schedules",
+  "discover": "Discover",
+  "check-in-priority-title": "Check-in and boarding priority",
+  "check-in-priority-description": "Skip queues and board before everyone.",
+  "personal-concierge-title": "Personal Concierge",
+  "personal-concierge-description": "Get all the support for your trip to be the way you planned.",
+  "consultative-sales-title": "Specialized consultative sales",
+  "consultative-sales-description": "Count with experts prepared to conduct you to the best experience.",
+  "baggage-priority-title": "Priority on bag receiving",
+  "baggage-priority-description": "Don't waste time waiting for your baggages.",
+  "free-baggage-title": "Free baggages",
+  "free-baggage-description": "Dispatch your 1st, 2nd and 3rd baggages up to 23kg each for free, in your GOL flight",
+  "vip-access-title": "Access to VIP rooms",
+  "vip-access-description": "Enjoy with the best comfort, flying with Gol in international boardings.",
+  "new-way-to-travel": "Check out your new way to travel",
+  "gather-miles-title": "Increase your miles",
+  "gather-miles-description": "Gather miles buying Smiles packages and travel even more",
+  "contact-us": "Contact us",
+  "faq-data": [
+    {
+      "category": "Financial",
+      "questions": [
+        {
+          "title": "What are the refund policies?",
+          "summary": "Please contact our specialized consulting team by clicking on the Contact Us button on the top bar of the first page of this website (home). We provide a consultative sales team to guide you at any stage of your purchase."
+        },
+        {
+          "title": "How can I obtain credit for the purchase made to use on other products within the site?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "My credit card was declined at the time of purchase. What should I do?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "What are the payment policies?",
+          "summary": "The total cost is charged to your credit card at the time of purchase. Room/unit prices and availability are only guaranteed upon receipt of full payment."
+        },
+        {
+          "title": "I received an incorrect charge. What should I do?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Where can I find the confirmation/payment receipt for my reservation?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "How can I request the invoice for my purchase?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        }
+      ]
+    },
+    {
+      "category": "Platform",
+      "questions": [
+        {
+          "title": "How can I register on the website?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "How can I update my information on the website?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "How can I change the dates of the products I purchased on the website (flight, hotel, etc.)?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "How can I change the hotel after making the purchase?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "How can I change my registration email on the website?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "What are the privacy policies?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "How is my data used?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "How are my data protected?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "I have completed the reservation payment, but I have not received the payment confirmation email. What should I do?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "My reservation was declined. What should I do?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "How can I register a compliment or complaint on the website?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        }
+      ]
+    },
+    {
+      "category": "Customer Service",
+      "questions": [
+        {
+          "title": "What is a voucher?",
+          "summary": "A voucher is a document that contains all the important information regarding your reservation and must be presented to use the services contracted during your trip."
+        },
+        {
+          "title": "I have dietary restrictions and/or want to request a special meal on my trip. What do I do?",
+          "summary": "In special cases (except for accessibility and late arrival to the property), the customer should contact the property directly for specific requests."
+        },
+        {
+          "title": "What is the reservation locator?",
+          "summary": "It is the unique number generated for each reservation issued in the system."
+        },
+        {
+          "title": "Do I need to pay any additional amount on arrival?",
+          "summary": "Sometimes it is necessary to pay taxes and fees upon arrival. If that is the case, the amount is indicated before booking and in your confirmation email. If there is no indication of any amount, you do not need to pay anything on arrival. If the accommodation makes any charges and you believe they are unwarranted, please visit the Help Center."
+        },
+        {
+          "title": "Are meals included in my reservation?",
+          "summary": "Your confirmation voucher will state which meals are or are not included in the contracted plan."
+        },
+        {
+          "title": "How can I request an additional service for my accommodation?",
+          "summary": "If you want to request an additional service, please contact the accommodation directly 1-2 days before the check-in date. Additional services cannot be guaranteed, but they may be able to help."
+        },
+        {
+          "title": "Through which channel will my voucher be sent?",
+          "summary": "You will receive a confirmation email as soon as the reservation is confirmed."
+        },
+        {
+          "title": "What documents are required for boarding?",
+          "summary": "International vaccine certificate issued by Conecte SUS; Passport. The document (passport) must be valid for at least 6 (six) months after the return date of the trip. For trips in national territory and South America, only the RG (Identification Card) is necessary in good condition and with a validity of 10 years from the date of issue."
+        },
+        {
+          "title": "What is the best time to arrive at the airport?",
+          "summary": "For trips within national territory, the general recommendation is that passengers arrive at least 3 (three) hours before boarding. For international trips (outside the country), it is recommended to be at the airport around 4 (four) hours before boarding."
+        },
+        {
+          "title": "Can I request early check-in and late check-out on my reservation?",
+          "summary": "Please contact the hotel directly 1-2 days before the check-in date. Additional services are not guaranteed."
+        },
+        {
+          "title": "How can I make a special request for my accommodation?",
+          "summary": "Contact the hotel directly for any special requests (such as honeymoon, wedding anniversary, baby moon, etc.), however, these are not guaranteed services because they depend entirely on the hotel."
+        },
+        {
+          "title": "How can I check the status of my flight?",
+          "summary": "Through the airline's website, using your locator."
+        },
+        {
+          "title": "What is the locator?",
+          "summary": "It is the reservation number of your ticket, a sequence usually composed of letters that you will use to view your flight, check-in, check schedules, etc."
+        },
+        {
+          "title": "How can I reserve my seats?",
+          "summary": "Through the airline's website, using your locator. Additional charges may or may not apply."
+        },
+        {
+          "title": "How do I purchase luggage?",
+          "summary": "Through the airline's website using your locator or directly at the airport."
+        },
+        {
+          "title": "How can I obtain my e-ticket?",
+          "summary": "The electronic boarding pass is issued after online check-in or directly at the airport."
+        }
+      ]
+    },
+    {
+      "category": "Covid-19",
+      "questions": [
+        {
+          "title": "Is it necessary to wear a mask for boarding?",
+          "summary": "Check the mask-wearing requirements for boarding according to the rules of each airline."
+        },
+        {
+          "title": "Is it necessary to present a negative Covid-19 test result?",
+          "summary": "The rules of each destination can change without prior notice, so it's necessary to check the government rules of the destination country."
+        },
+        {
+          "title": "I would like to reschedule, change, and/or cancel my trip due to Covid-19. What should I do?",
+          "summary": "Rescheduling, changing, or canceling your trip is subject to the rules of the supplier (hotel, airline, etc). There may be penalties, additional costs, and availability check with the supplier(s) for the new chosen period."
+        }
+      ]
+    }
+  ]
+}

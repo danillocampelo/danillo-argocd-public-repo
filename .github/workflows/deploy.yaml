@@ -1,0 +1,136 @@
+name: nextjs-smiles
+
+on:
+  push:
+    branches:
+      - dev
+      - staging
+      - main
+jobs:
+  build-push-gcr:
+    name: Build and Push to GCP
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_PATH: us-west2-docker.pkg.dev
+      IMAGE_NAME: 'smiles-web-${{github.ref_name}}'
+      PROJECT_ID: outsmart-development
+      GKE_CLUSTER: smiles-cluster-staging
+      GKE_ZONE: southamerica-east1-a
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.SERVICE_ACCOUNT_KEY }}'
+
+      - uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - run: |-
+          gcloud --quiet auth configure-docker
+
+      - uses: google-github-actions/get-gke-credentials@v0
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          location: ${{ env.GKE_ZONE }}
+
+      - id: secret_name
+        uses: dkershner6/switch-case-action@v1
+        with:
+          default: "development"
+          conditionals-with-values: |
+            ${{ github.ref_name == 'main' }} => prod_env
+            ${{ github.ref_name == 'staging' }} => staging_env
+            ${{ github.ref_name == 'dev' }} => dev_env
+
+      - id: environment
+        uses: dkershner6/switch-case-action@v1
+        with:
+          default: "development"
+          conditionals-with-values: |
+            ${{ github.ref_name == 'main' }} => production
+            ${{ github.ref_name == 'staging' }} => staging
+            ${{ github.ref_name == 'dev' }} => dev
+
+      - id: namespace
+        uses: dkershner6/switch-case-action@v1
+        with:
+          default: "smiles-dev"
+          conditionals-with-values: |
+            ${{ github.ref_name == 'main' }} => smiles
+            ${{ github.ref_name == 'staging' }} => smiles-hm
+            ${{ github.ref_name == 'dev' }} => smiles-dev
+
+      - name: Create secret with env
+        run: |-
+          touch env.txt
+          echo '${{ secrets[steps.secret_name.outputs.value] }}' >> env.txt
+          bash ./iac/scripts/create-secret-env.sh -f env.txt -n ${{ steps.namespace.outputs.value }}  >> .env.local
+
+      - name: Build Docker Image
+        run: docker build --build-arg environment=${{ steps.environment.outputs.value }} -t $IMAGE_NAME:latest .
+
+      - name: Automatic Tagging of Releases
+        if: "${{ github.ref_name == 'main' }}"
+        id: increment-git-tag
+        run: |
+          bash ./iac/scripts/git_update.sh -v patch
+
+      - name: Configure Docker Client
+        run: |-
+          gcloud auth configure-docker --quiet
+          gcloud auth configure-docker $IMAGE_PATH --quiet
+      - name: Push Docker Image to Artifact Registry
+        env:
+          GIT_TAG: ${{ github.ref_name == 'main' && steps.increment-git-tag.outputs.git-tag || github.sha }}
+        run: |-
+          docker tag $IMAGE_NAME:latest $IMAGE_PATH/$PROJECT_ID/images/$IMAGE_NAME:latest
+          docker tag $IMAGE_NAME:latest $IMAGE_PATH/$PROJECT_ID/images/$IMAGE_NAME:$GIT_TAG
+          docker push $IMAGE_PATH/$PROJECT_ID/images/$IMAGE_NAME:latest
+          docker push $IMAGE_PATH/$PROJECT_ID/images/$IMAGE_NAME:$GIT_TAG
+
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize-version: '3.6.1'
+
+      - name: Update Kubernetes resources branch main
+        if: "${{ github.ref_name == 'main' }}"
+        env:
+          GIT_TAG: ${{ steps.increment-git-tag.outputs.git-tag }}
+        run: |
+          cd iac/argo-cd/production
+          kustomize edit set image smiles-web=$IMAGE_PATH/$PROJECT_ID/images/$IMAGE_NAME:latest
+
+      - name: Update Kubernetes resources branch staging
+        if: "${{ github.ref_name == 'staging' }}"
+        env:
+          GIT_TAG: ${{ github.sha }}
+        run: |
+          cd iac/argo-cd/staging
+          kustomize edit set image smiles-web=$IMAGE_PATH/$PROJECT_ID/images/$IMAGE_NAME:$GIT_TAG
+
+      - name: Update Kubernetes resources branch develop
+        if: "${{ github.ref_name == 'dev' }}"
+        env:
+          GIT_TAG: ${{ github.sha }}
+        run: |
+          cd iac/argo-cd/dev
+          kustomize edit set image smiles-web=$IMAGE_PATH/$PROJECT_ID/images/$IMAGE_NAME:$GIT_TAG
+
+      - name: Commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git pull
+          git commit -am "Bump docker version"
+
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: outsmartdigital/smiles-web
+          branch: ${{ github.ref }}

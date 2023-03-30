@@ -1,0 +1,14 @@
+.custom-checkbox :global input[type="checkbox"]+span, .custom-checkbox :global .ant-checkbox, .custom-checkbox:global.ant-checkbox-wrapper {
+  @apply w-6 h-6 md:w-7 md:h-7 !important;
+}
+
+.custom-checkbox :global .ant-checkbox {
+  @apply top-0 !important;
+}
+
+.custom-checkbox :global input[type="checkbox"]:checked:hover+span {
+  @apply bg-primary-pressed outline-primary-pressed !important;
+}
+.custom-checkbox :global .ant-checkbox-inner::after {
+  @apply w-[10px] h-[15px] left-[30%] !important;
+}

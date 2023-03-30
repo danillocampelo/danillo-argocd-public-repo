@@ -1,0 +1,188 @@
+{
+  "steps": {
+    "previous-step": "Previous step",
+    "next-step": "Next step",
+    "origin-accommodation": "Origin and accommodation",
+    "rooms": "Rooms",
+    "departure-flight": "Departure flight",
+    "return-flight": "Return flight",
+    "itinerary": "Itinerary",
+    "people": "People",
+    "optional": "Optionals",
+    "payment": "Payment",
+    "review": "Review",
+    "booked": "Booked",
+    "missing-availability": "No availability for the selected options"
+  },
+  "other-options": "Other options",
+  "caption": "Additional values can be included",
+  "recommended": "Recommended",
+  "remaining-only": "Only {{number}} remain",
+  "total-value": "Total value",
+  "print-summary": "Print summary",
+  "searchBar": {
+    "title": "Enter your place of origin",
+    "placeholder": "Insert the city you will leave from",
+    "notFoundContent": "No results found",
+    "contentMinLength": "Type at least 3 characters for searching",
+    "label": "Departure Location",
+    "error": "Please, select an origin location"
+  },
+  "roomSelection": {
+    "title": "Choose your {{count}}st room"
+  },
+  "roomQuantitySelection": {
+    "title": "Add rooms",
+    "rooms": "Rooms",
+    "defineQuantity": "Define the quantity",
+    "room": "Room",
+    "adults": "Adults",
+    "children": "Children",
+    "babies": "Babies",
+    "adultsAge": "Above {{minYears}} years old",
+    "childrenAge": "From {{minYears}} to {{maxYears}} years old",
+    "babiesAge": "From {{minMonths}} to {{maxMonths}} months old",
+    "removeRoom": "Remove room",
+    "addedAriaLabel": "Add 1 {{added}}",
+    "removedAriaLabel": "Remove 1 {{removed}}",
+    "quantityAriaLabel": "{{quantity}} {{type}} total"
+  },
+  "packageDates": {
+    "title": "Select the period of your trip",
+    "startDate": "Departure date",
+    "endDate": "Return date",
+    "error": "Please, select a departure date"
+  },
+  "accommodation": {
+    "title": "Choose your accommodation",
+    "all-inclusive": "All Inclusive",
+    "refundable-tariff": "Refundable tariff",
+    "select-dates": "Please, select departure date",
+    "check-in": "Check-in",
+    "check-out": "Check-out",
+    "cancel-policy": "Cancel policy",
+    "starting-at": "Starting at",
+    "more-info": "More information",
+    "offers": "What the place offers"
+  },
+  "roadmap": {
+    "day": "Day",
+    "title": "Check out the itinerary we prepared for you",
+    "subtitle": "All activities are included in your journey",
+    "duration": "hours long"
+  },
+  "flightSelection": {
+    "title": "See here the recommended one-way flight by Smiles Viagens",
+    "subtitle": "Option with shortest duration and no stopovers",
+    "flight": "Flight",
+    "operated-by": "Operated by",
+    "departure-ticket": "Departure Ticket",
+    "return-ticket": "Return Ticket",
+    "duration": "Duration",
+    "direct": "Direct",
+    "stops": "stops",
+    "benefits": "Benefits",
+    "while-flight": "During the flight",
+    "per-person-value": "Value per person",
+    "of-increase": "of increase",
+    "of-discount": "of discount"
+  },
+  "people": {
+    "title": "Provide information to travelers",
+    "adult": "Adult {{count}}",
+    "child": "Child {{count}}",
+    "baby": "Baby {{count}}",
+    "caption": "Will be responsible for check-in and check-out at the hotel",
+    "name": "Name",
+    "insert-name": "Insert your name",
+    "name-required": "Please, enter the name of the traveler",
+    "lastname": "Last Name",
+    "insert-lastname": "Insert your last name",
+    "lastname-required": "Please, enter the last name of the traveler",
+    "document": "Identification document",
+    "document-tooltip": "Use the CPF document for identification",
+    "birth-date": "Date of birth",
+    "birth-date-required": "Please, enter the traveler's date of birth"
+  },
+  "table": {
+    "review-title": "Check and confirm your purchase",
+    "booked-title": "Information about your trip",
+    "people": "People",
+    "flight": "Flight",
+    "itinerary": "Itinerary",
+    "additional-services": "Additional services",
+    "total-fees": "Total Fees",
+    "amount": "Amount",
+    "cancellation-policy": "Cancellation policy",
+    "operator": "Operator",
+    "total-ticket-value": "Total ticket value",
+    "birth-in": "Birth in",
+    "earned-miles": "You earned {{miles}} Smiles miles",
+    "accomodation-info": {
+      "refundable-fare": "Refundable fare",
+      "title": "Accomodation",
+      "hotel": "Hotel",
+      "rooms-quantity": "Rooms quantity",
+      "rooms-category": "Rooms category",
+      "people-quantity": "Travellers quantity",
+      "price-per-person": "Price per traveller",
+      "total-price": "Accomodation total price"
+    }
+  },
+  "booked": {
+    "order": "Order",
+    "title": "Congratulations on your purchase!",
+    "message": "From now on, you have the Personal Concierge Smiles Viagens for everything you need. If you want to ask questions or request any type of support, just contact them via WhatsApp or App",
+    "talk-to-concierge": "Talk to Concierge",
+    "travelers": "Travelers",
+    "included-services": "Package included services",
+    "services": [
+      {
+        "title": "Check-in and boarding priority",
+        "icon": "airplane-ticket",
+        "description": "Passe direto pelas filas e embarque antes de todo mundo"
+      },
+      {
+        "title": "Personal Concierge",
+        "icon": "room-service",
+        "description": "Get all the support to make your trip the way you planned."
+      },
+      {
+        "title": "Specialized consultative selling",
+        "icon": "handshake",
+        "description": "Count on specialists prepared to lead you to the best experience."
+      },
+      {
+        "title": "Access to VIP rooms",
+        "icon": "chair",
+        "description": "Enjoy all the comfort, flying with Gol in international departure."
+      },
+      {
+        "title": "Free luggage boarding",
+        "icon": "redeem",
+        "description": "Free check-in of the 1st, 2nd and 3rd bags of up to 23kg each, on GOL flights"
+      },
+      {
+        "title": "Earn Smiles miles",
+        "icon": "check",
+        "description": "Accumulate miles by purchasing a Smiles Viagens package and travel more and more"
+      },
+      {
+        "title": "In-flight wifi",
+        "icon": "wifi",
+        "description": ""
+      },
+      {
+        "title": "Priority baggage",
+        "icon": "room-service",
+        "description": ""
+      }
+    ]
+  },
+  "payment": {
+    "error": "Try to make the payment again"
+  },
+  "review": {
+    "error": "There was an error with your booking, please check availability again."
+  }
+}

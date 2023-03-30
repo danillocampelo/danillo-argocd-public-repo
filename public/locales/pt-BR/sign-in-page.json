@@ -1,0 +1,15 @@
+{
+  "access-your-account": "Acesse sua conta",
+  "email-placeholder": "Insira seu e-mail",
+  "password": "Senha",
+  "advance": "Avançar",
+  "forgot-my-password": "Esqueci minha senha",
+  "first-time-here": "É sua primeira vez aqui?",
+  "create-smiles-account": "Crie sua conta Smiles Viagens. É simples e rápido.",
+  "create-account": "Criar cadastro",
+  "invalid-email": "Insira um e-mail válido.",
+  "invalid-credentials": "E-mail ou senha inválidos.",
+  "login": "Fazer login",
+  "description-login": "Uma nova janela será aberta para acessar sua conta Smiles com e-mail, CPF ou número Smiles",
+  "description-signup": "Após finalizar seu cadastro, retorne a Smiles Viagem para completar sua compra ou acessar sua conta."
+}

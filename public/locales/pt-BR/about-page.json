@@ -1,0 +1,245 @@
+{
+  "change-your-experience": "Vamos mudar a forma como você experiencia o mundo.",
+  "smiles-description": "Somos uma consultora de viagens e plataforma de experiências que acredita na personalização como ferramenta essencial para proporcionar a você momentos extraordinários. \n\n Através de uma curadoria criteriosa, nossos roteiros são cuidadosamente elaborados, respeitando sua autonomia de criar sua própria história, seja qual for sua fase de vida, sonho ou propósito. \n\n Na Smiles Viagens, você ainda tem acesso a serviços exclusivos, hotéis de alta categoria, venda consultiva e suporte de concierge durante toda a viagem. Tudo para que a sua próxima aventura seja a mais segura, confortável e encantadora possível.",
+  "live": "viva",
+  "unique-experiences": "Viva a exclusividade Smiles Viagens",
+  "schedule": "Roteiros cuidadosamente elaborados",
+  "discover": "Descubra",
+
+  "faq-title": "Suas dúvidas também são tratadas como prioridade (F.A.Q.)",
+  "faq-subtitle": "Não encontrou o que procurava? Fale com a gente.",
+  "faq-sac-number": "SAC 0800 000 000",
+  "check-in-priority-title": "Check-in e embarque prioritários",
+  "check-in-priority-description": "Passe direto pelas filas e embarque antes de todo mundo.",
+  "personal-concierge-title": "Personal Concierge",
+  "personal-concierge-description": "Tenha todo o suporte para que a sua viagem seja do jeito que você planejou.",
+  "consultative-sales-title": "Venda consultiva especializada",
+  "consultative-sales-description": "Conte com especialistas preparados para te conduzir à melhor experiência.",
+  "free-baggage-title": "Bagagens gratuitas",
+  "free-baggage-description": "Despache gratuitamente a 1ª, 2ª e 3ª bagagens de até 23kg cada, em voos GOL",
+  "vip-access-title": "Acesso às salas VIP",
+  "vip-access-description": "Aproveite toda a comodidade, voando Gol no embarque internacional.",
+  "new-way-to-travel": "Confira aqui o seu novo jeito de viajar",
+  "gather-miles-title": "Aumente suas milhas",
+  "gather-miles-description": "Acumule milhas comprando um pacote Smiles Viagens, e viaje cada vez mais",
+  "contact-us": "Fale conosco",
+  "services-list": [
+    {
+      "title": "Prioridade no embarque e check-in",
+      "icon": "sparkling-arrow",
+      "description": "Para você e todos os acompanhantes no mesmo localizador, em voos GOL"
+    },
+    {
+      "title": "Prioridade no recebimento de bagagens",
+      "icon": "backpack",
+      "description": "Para voos GOL e exclusivamente para clientes Smiles Viagens"
+    },
+    {
+      "title": "Venda consultiva especializada",
+      "icon": "drawing-pen",
+      "description": "Serviço de consultoria a um clique de distância, para te conduzir à melhor experiência"
+    },
+    {
+      "title": "Personal Concierge",
+      "icon": "user-balloon",
+      "description": "Suporte humano dedicado a garantir que tudo saia como você planejou, da compra da viagem até o fim da jornada."
+    },
+    {
+      "title": "Acesso às salas VIP",
+      "icon": "sparkles",
+      "description": "Trânsito livre e gratuito ao GOL Premium Lounge em São Paulo (GRU) e Rio de Janeiro (GIG)"
+    },
+    {
+      "title": "Gratuidade da 1ª, 2ª e 3ª bagagens de até 23kg ",
+      "icon": "suitcase",
+      "description": "Benefício individual, somente para o cliente Smiles Viagens"
+    }
+  ],
+
+  "faq-data": [
+    {
+      "category": "Financeiro",
+      "questions": [
+        {
+          "title": "Quais são as políticas de reembolso?",
+          "summary": "Entre em contato com a nossa consultoria especializada, clicando no botão Consulte-nos, na barra superior da primeira página deste site (home). Disponibilizamos uma equipe de venda consultiva para te orientar em qualquer etapa da sua compra."
+        },
+        {
+          "title": "Como poderei obter o crédito da compra realizada para utilizar em outros produtos dentro do site?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Meu cartão de crédito foi recusado no momento da compra. Como devo proceder?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Quais são as políticas de pagamentos?",
+          "summary": "O custo total é cobrado no seu cartão de crédito no momento da compra. Os preços e disponibilidade do quarto/unidade são garantidos somente após o recebimento do pagamento total."
+        },
+        {
+          "title": "Recebi uma cobrança indevida. Como devo proceder?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Onde encontrar a confirmação / comprovante de pagamento da reserva?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Como poderei solicitar a nota fiscal da minha compra?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        }
+      ]
+    },
+    {
+      "category": "Plataforma",
+      "questions": [
+        {
+          "title": "Como posso me cadastrar no site?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Como posso alterar meus dados no site?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Como posso alterar as datas dos produtos que comprei no site (aéreo, hotel etc.)?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Como posso alterar o hotel após a realização da compra?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Como posso alterar o meu e-mail de cadastro no site?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Quais são as políticas de privacidade?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Como utilizam os meus dados?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Como protegem os meus dados?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Finalizei o pagamento da reserva, mas não recebi o e-mail de confirmação de pagamento. Como devo proceder?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Minha reserva foi recusada. Como devo proceder?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        },
+        {
+          "title": "Como posso registrar um elogio ou reclamação no site?",
+          "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has"
+        }
+      ]
+    },
+    {
+      "category": "Atendimento",
+      "questions": [
+        {
+          "title": "O que é o voucher?",
+          "summary": "O voucher é um documento comprovatório que possui todas as informações importantes referentes à sua reserva, e deverá ser apresentado para utilização dos serviços contratados durante a sua viagem."
+        },
+        {
+          "title": "Possuo restrições alimentares e/ou desejo solicitar uma refeição especial na minha viagem. Como procedo?",
+          "summary": "Em casos especiais (exceto acessibilidade e chegada tardia à propriedade), o cliente deverá contatar diretamente a propriedade para solicitações específicas."
+        },
+        {
+          "title": "O que é o localizador da reserva?",
+          "summary": "É o número exclusivo gerado para cada reserva emitida no sistema."
+        },
+        {
+          "title": "Preciso pagar algum valor adicional na chegada? ",
+          "summary": "Às vezes é necessário pagar impostos e taxas na chegada. Se esse for o caso, o valor é indicado antes da reserva e no seu e-mail de confirmação. Se não houver a indicação de nenhum valor, você não precisa pagar nada na chegada.Se a acomodação fizer alguma cobrança e você achar que ela é indevida, por favor, visite a Central de Ajuda."
+        },
+        {
+          "title": "As refeições estão incluídas na minha reserva?",
+          "summary": "Em seu voucher de confirmação constará quais refeições estão ou não incluídas no regime contratado."
+        },
+        {
+          "title": "Como posso solicitar um serviço adicional para a minha acomodação?",
+          "summary": "Caso queira solicitar um serviço adicional, por favor, entre diretamente em contato com a acomodação de 1 a 2 dias antes da data do check-in. Não é possível garantir os serviços adicionais, mas talvez eles possam ajudar."
+        },
+        {
+          "title": "Através de qual canal será enviado o meu voucher?",
+          "summary": "Você receberá um e-mail de confirmação assim que a reserva for confirmada."
+        },
+        {
+          "title": "Quais são os documentos necessários para o embarque?",
+          "summary": "Certificado internacional de vacina, emitido pelo Conecte SUS;\nPassaporte. O documento (passaporte) deverá ter a validade mínima de 6 (seis) meses após o retorno da data da viagem.\nPara viagens em território nacional e América do Sul apenas o RG é necessário em bom estado e com validade de 10 anos da data de emissão."
+        },
+        {
+          "title": "Qual é o melhor horário de chegada no aeroporto?",
+          "summary": "Para viagens em território nacional, a recomendação geral é de que os passageiros cheguem pelo menos 3 (três) horas antes do embarque.\nPara viagens internacionais (exterior), o recomendável é estar no aeroporto por volta de 4 (quatro) horas antes do embarque."
+        },
+        {
+          "title": "Posso solicitar o early check-in e late check-out na minha reserva?",
+          "summary": "Por favor, entre em contato diretamente com o hotel de 1 a 2 dias antes da data do check-in. Serviços adicionais não são garantidos."
+        },
+        {
+          "title": "Como posso realizar uma solicitação especial para a acomodação?",
+          "summary": "Entrar em contato diretamente com o hotel para qualquer solicitação especial (por exemplo, lua de mel, aniversário de casamento, baby moon etc.), porém, esses são serviços não garantidos porque dependem inteiramente do hotel."
+        },
+        {
+          "title": "Como posso visualizar o status do meu voo?",
+          "summary": "Através do site da companhia aérea, utilizando o seu localizador."
+        },
+        {
+          "title": "O que é o localizador?",
+          "summary": "É o número de reserva da sua passagem, uma sequência composta geralmente por letras a qual você usará para visualizar seu voo, fazer check-in, consultar os horários etc."
+        },
+        {
+          "title": "Como posso marcar os meus assentos? ",
+          "summary": "Através do site da companhia aérea, utilizando o seu localizador. Podendo ou não haver custos adicionais."
+        },
+        {
+          "title": "Como faço para comprar bagagens?",
+          "summary": "Através do site da companhia aérea utilizando o seu localizador ou diretamente no aeroporto."
+        },
+        {
+          "title": "Como posso obter o meu bilhete eletrônico?",
+          "summary": "O bilhete eletrônico de embarque é emitido após a realização do check-in de forma online ou diretamente no aeroporto."
+        },
+        {
+          "title": "Gostaria de levar meu animal de estimação junto na viagem. O que devo fazer?",
+          "summary": "Você deverá entrar em contato com a companhia aérea para verificar as condições e checar se o hotel reservado é pet friendly."
+        },
+        {
+          "title": "Contratei o serviço de traslado através do site, como poderei localizá-lo ao chegar no meu destino?",
+          "summary": "O transfer aguardará no ponto de chegada com uma placa de identificação."
+        },
+        {
+          "title": "Quais são os procedimentos em caso de no show?",
+          "summary": "No show (não comparecimento do passageiro nos serviços contratados) implica em cancelamento da reserva e o valor pago não é reembolsado. No caso de chegada tardia, é sempre necessário avisar ao hotel com antecedência."
+        },
+        {
+          "title": "Por que alguns hotéis solicitam meu cartão de crédito no momento do check-in mesmo a reserva estando paga?",
+          "summary": "Porque o cartão de crédito é uma garantia do hotel nos casos de gastos extras dos hóspedes durante a estadia, como serviços de quarto, itens de frigobar, danos à propriedade etc."
+        }
+      ]
+    },
+    {
+      "category": "Covid-19",
+      "questions": [
+        {
+          "title": "É necessário utilizar máscara para o embarque?",
+          "summary": "Verifique a obrigatoriedade do uso de máscara para o embarque, de acordo com as regras de cada companhia aérea."
+        },
+        {
+          "title": "É necessário apresentar o resultado negativo do teste para Covid-19?",
+          "summary": "As regras de cada destino podem mudar sem aviso prévio, sendo assim necessário consultar as regras governamentais do país de destino."
+        },
+        {
+          "title": "Gostaria de remarcar, alterar e/ou cancelar minha viagem por conta da Covid- 19. Como devo proceder?",
+          "summary": "A remarcação, alteração ou cancelamento da sua viagem está sujeita às regras do fornecedor (hotel, companhia aérea, etc). Podendo haver incidência de multas, necessidade de custos adicionais e verificação de disponibilidade do(s) fornecedor(es) para o novo período escolhido."
+        }
+      ]
+    }
+  ]
+}

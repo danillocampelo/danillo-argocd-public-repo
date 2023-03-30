@@ -1,0 +1,25 @@
+.custom-radio-button :global .ant-radio-inner {
+  @apply w-6 h-6 md:w-7 md:h-7 !important;
+  @apply border-[5px] border-white md:border-[6px] !important;
+  @apply outline outline-2;
+}
+
+.custom-radio-button:global.shadow-radio-container-unchecked :global .ant-radio-inner {
+  @apply outline-gray-40 !important;
+  @apply bg-white !important;
+}
+
+.custom-radio-button :global input[type="radio"]:hover+span {
+ @apply bg-gray-40 !important;
+}
+
+.custom-radio-button:global.shadow-radio-container-checked .ant-radio-inner {
+  @apply bg-primary outline-primary !important;
+}
+
+.custom-radio-button:global.shadow-radio-container-checked .ant-radio-inner:hover {
+  @apply bg-primary-pressed outline-primary-pressed !important;
+}
+.custom-radio-button :global .ant-radio-inner::after {
+  @apply hidden;
+}

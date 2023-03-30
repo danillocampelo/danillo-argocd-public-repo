@@ -1,0 +1,16 @@
+{
+  "steps": {
+    "origin-and-travellers": "Origin and travellers",
+    "hotel": "Hotel",
+    "tours": "Tours",
+    "assurance": "Assurance"
+  },
+  "side-menu": {
+    "destination": "Destination"
+  },
+  "tour": {
+    "description": "Explore new places and incredible experiences",
+    "unmissable": "Unmissable",
+    "trending": "Trending"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "order-details": "Order details -",
+  "nights": "nights",
+  "passengers": "Passengers",
+  "flights": "Flights",
+  "outbound": "Outbound",
+  "return": "Return",
+  "adult": "Adult",
+  "child": "Child",
+  "baby": "Baby",
+  "payment": "Payment",
+  "order-status": {
+    "AUTHORIZED": "Approved",
+    "CAPTURED": "Approved",
+    "ANALYZING": "Analyzing",
+    "PENDING": "Pending",
+    "RECURRENT": "Recurrent",
+    "DENIED": "Denied",
+    "CANCELED": "Canceled"
+  },
+  "order-not-found": "Order not found",
+  "guests": "Guests",
+  "more-info": "More information",
+  "accommodations": "Accommodations",
+  "stay": "Stay",
+  "stars": "Stars"
+}

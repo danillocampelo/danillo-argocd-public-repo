@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-h1-mobile;
+  }
+  h2 {
+    @apply text-h2-mobile;
+  }
+  h3 {
+    @apply text-h3-mobile;
+  }
+  h4 {
+    @apply text-h4-mobile;
+  }
+  h5 {
+    @apply text-h5-mobile;
+  }
+  h6 {
+    @apply text-h6-desktop;
+  }
+
+  @screen md {
+    h1 {
+      @apply text-h1-desktop;
+    }
+    h2 {
+      @apply text-h2-desktop;
+    }
+    h3 {
+      @apply text-h3-desktop;
+    }
+    h4 {
+      @apply text-h4-desktop;
+    }
+    h5 {
+      @apply text-h5-desktop;
+    }
+    h6 {
+      @apply text-h6-desktop;
+    }
+  }
+}
+
+.text-h1-mobile,
+.text-h2-mobile,
+.text-h3-mobile,
+.text-h4-mobile,
+.text-h5-mobile,
+.text-h1-desktop,
+.text-h2-desktop,
+.text-h3-desktop,
+.text-h4-desktop,
+.text-h5-desktop,
+.text-h6-desktop,
+.text-paragraph-medium,
+.text-paragraph-small,
+.text-hyperlink-medium,
+.text-hyperlink-small,
+.text-caption {
+  @apply font-primary;
+}
+
+.text-tag,
+.text-tag-large,
+.text-button {
+  @apply font-secondary;
+  @apply uppercase;
+}
+
+@layer components {
+  .button-extra-small {
+    @apply h-8 gap-2 px-[6px];
+  }
+
+  .button-extra-small.has-right-icon {
+    @apply pl-3 ;
+  }
+
+  .button-extra-small.has-left-icon {
+    @apply pr-3 ;
+  }
+
+  .button-small {
+    @apply h-9 gap-4 px-3;
+  }
+
+  .button-small.has-right-icon {
+    @apply pl-5 ;
+  }
+
+  .button-small.has-left-icon {
+    @apply pr-5 ;
+  }
+
+  .button-regular {
+    @apply h-12 gap-6 px-6;
+  }
+
+  .button-regular.has-right-icon {
+    @apply pl-7 ;
+  }
+
+  .button-regular.has-left-icon {
+    @apply pr-7 ;
+  }
+
+}
+
+html,
+body,
+#__next {
+  @apply min-h-screen;
+}

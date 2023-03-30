@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render with default styles 1`] = `
+<button
+  class="flex uppercase py-4 px-6 mr-0 font-medium leading-4 font-tertiary justify-around items-center w-[164px] border border-secondary bg-secondary text-secondary-contrast disabled:bg-gray-800 hover:text-secondary hover:bg-secondary-contrast hover:border-secondary undefined undefined"
+>
+  Default
+</button>
+`;
