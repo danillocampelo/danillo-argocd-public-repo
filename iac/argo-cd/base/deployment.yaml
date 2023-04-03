@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smiles-api
+spec:
+  selector:
+    matchLabels:
+      app: smiles-api
+  template:
+    metadata:
+      labels:
+        app: smiles-api
+    spec:
+      imagePullSecrets:
+        - name: artifact-registry
+      containers:
+        - name: smiles-api
+          image: smiles-api
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: smiles-api-secret
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "250m"
+            limits:
+              memory: "700Mi"
+              cpu: "500m"

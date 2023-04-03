@@ -1,0 +1,50 @@
+name: update-env-nestjs-aws
+
+on:
+  workflow_dispatch:
+    inputs:
+      nameSecret:
+        description: 'Name Secret for update'
+        required: true
+
+jobs:
+  update-env:
+    name: Update Env
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: us-east-1
+      AWS_CLUSTER: smiles-viagens-backend-cluster
+      SECRET_NAME: ${{ github.event.inputs.nameSecret }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ env.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ env.AWS_SECRET_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+    - name: Update kubeconfig
+      run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.AWS_CLUSTER }}
+
+    - uses: dkershner6/switch-case-action@v1
+      id: namespace
+      with:
+        default: "default"
+        conditionals-with-values: |
+            ${{ env.SECRET_NAME == 'staging_aws' }} => smiles-hm
+            ${{ env.SECRET_NAME == 'staging' }} => smiles-hm
+    - uses: dkershner6/switch-case-action@v1
+      id: deployment
+      with:
+        default: "default"
+        conditionals-with-values: |
+            ${{ env.SECRET_NAME == 'staging_aws' }} => staging-smiles-api
+            ${{ env.SECRET_NAME == 'staging' }} => staging-smiles-api
+    - name: Create secret with env
+      run: |-
+        touch env.txt
+        echo '${{ secrets[env.SECRET_NAME] }}' >> env.txt
+        bash ./iac/scripts/create-secret-env.sh -f env.txt -n ${{ steps.namespace.outputs.value }} -d ${{ steps.deployment.outputs.value }}

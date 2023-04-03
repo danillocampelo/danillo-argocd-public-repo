@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: staging-
+
+resources:
+- ../../base
+
+patchesStrategicMerge:
+- ingress.yaml
+
+images:
+- name: smiles-api
+  newName: 186262579074.dkr.ecr.us-east-1.amazonaws.com/smiles-viagens-api
+  newTag: staging-1631610833707521f4954b45381c5bb711c1ba8b

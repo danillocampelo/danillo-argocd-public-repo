@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: smiles-api
+spec:
+  rules:
+  - host: api-smiles-hm.outsmartdigital.com.br
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: smiles-api-service
+            port:
+              number: 8080

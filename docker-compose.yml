@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  smiles-api:
+    build:
+      context: .
+      dockerfile: ./.docker/Dockerfile
+    container_name: api-smiles
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - DATABASE_URL=${DATABASE_URL}
+      - INFOTRAVEL_URL=${INFOTRAVEL_URL}
+      - INFOTRAVEL_USERNAME=${INFOTRAVEL_USERNAME}
+      - INFOTRAVEL_PASSWORD=${INFOTRAVEL_PASSWORD}
+      - INFOTRAVEL_CLIENT=${INFOTRAVEL_CLIENT}
+      - INFOTRAVEL_AGENCY=${INFOTRAVEL_AGENCY}

@@ -1,0 +1,110 @@
+name: nestjs-smiles-aws
+
+on:
+  push:
+    branches:
+      - staging
+jobs:
+  build-push-gcr:
+    name: Build and Push to AWS
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: us-east-1
+      AWS_CLUSTER: smiles-viagens-backend-cluster
+      AWS_ECR_REPO: ${{ secrets.AWS_ECR_REPO }}
+      IMAGE_NAME: 'smiles-api'
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build Docker Image
+      run: docker build -f ./.docker/Dockerfile -t $IMAGE_NAME:latest .
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ env.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ env.AWS_SECRET_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Update kubeconfig
+      run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.AWS_CLUSTER }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Automatic Tagging of Releases
+      if: "${{ github.ref_name == 'main' }}"
+      id: increment-git-tag
+      run: |
+        bash ./iac/scripts/git_update.sh -v patch
+
+    - uses: dkershner6/switch-case-action@v1
+      id: get_environment
+      with:
+        default: "staging"
+        conditionals-with-values: |
+            ${{ github.ref_name == 'staging' }} => staging
+
+    - name: Build, tag, and push the image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: ${{ env.AWS_ECR_REPO }}
+        IMAGE_TAG: ${{steps.get_environment.outputs.value}}-${{ github.ref_name == 'main' && steps.increment-git-tag.outputs.git-tag || github.sha }}
+      run: |-
+        docker tag $IMAGE_NAME:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "Pushing image to ECR..."
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+    - uses: dkershner6/switch-case-action@v1
+      id: namespace
+      with:
+        default: "default"
+        conditionals-with-values: |
+            ${{ steps.get_environment.outputs.value == 'staging' }} => smiles-hm
+
+    - uses: dkershner6/switch-case-action@v1
+      id: secret_name
+      with:
+        default: "staging"
+        conditionals-with-values: |
+            ${{ steps.get_environment.outputs.resul == 'staging' }} => staging_aws
+
+    - name: Create secret with env
+      run: |-
+        touch env.txt
+        echo '${{ secrets[steps.secret_name.outputs.value] }}' >> env.txt
+        bash ./iac/scripts/create-secret-env.sh -f env.txt -n ${{ steps.namespace.outputs.value }}
+
+    - name: Setup Kustomize
+      uses: imranismail/setup-kustomize@v1
+      with:
+        kustomize-version: "3.6.1"
+
+    - name: Update Kubernetes resources
+      env:
+         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+         ECR_REPOSITORY: ${{ env.AWS_ECR_REPO }}
+         IMAGE_TAG: ${{steps.get_environment.outputs.value}}-${{ github.ref_name == 'main' && steps.increment-git-tag.outputs.git-tag || github.sha }}
+      run: |
+        cd iac/argo-cd/aws/${{steps.get_environment.outputs.value}}
+        kustomize edit set image smiles-api=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+    - name: Commit
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git pull
+        git commit -am "ci: bump docker version"
+
+    - name: Push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository: outsmartdigital/smiles-monolith
+        branch: ${{ github.ref }}
