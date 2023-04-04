@@ -2,6 +2,7 @@ import {InfotravelFareDTO, InfotravelPriceDTO} from './infotravel.fare.dto'
 import {InfotravelTravellerDTO} from './infotravel.traveller.dto'
 
 export interface InfotravelHotelDTO {
+  locators: string[]
   hotel: {
     id: number
     keyDetail: string

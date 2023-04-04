@@ -80,6 +80,9 @@ export class HotelDTO {
   })
   @Type(() => Facility)
   facilities: Facility[]
+
+  @ApiProperty()
+  locators: string[]
 }
 
 export class RoomDTO {
@@ -104,6 +107,14 @@ export class RoomDTO {
   travellers: TravellerDTO[]
 }
 
+export class VoucherDTO {
+  @ApiProperty()
+  url: string
+
+  @ApiProperty()
+  redirect: string
+}
+
 export class BookingDetailDTO {
   @ApiProperty()
   id: string
@@ -122,6 +133,13 @@ export class BookingDetailDTO {
 
   @ApiProperty()
   destination: string
+
+  @ApiProperty({
+    isArray: true,
+    type: VoucherDTO,
+  })
+  @Type(() => VoucherDTO)
+  voucher: VoucherDTO
 
   @ApiProperty({
     isArray: true,

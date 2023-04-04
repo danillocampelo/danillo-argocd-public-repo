@@ -25,6 +25,8 @@ export interface InfoTravelPackageAvailbilitySearchParams {
   destination: number
   destinationType: string
   packageType: string
+  client?: number | string
+  packageId?: number
 }
 
 export declare namespace Availbility {
@@ -82,6 +84,7 @@ export interface IFare {
   price: Price
   priceNet?: PriceNet
   description?: string
+  point?: {amount: number}
 }
 
 export interface IHotel {
@@ -99,11 +102,7 @@ export interface IHotel {
 export interface ITourAvails {
   tour: ITour
   dates?: Iimage[]
-  fares: {
-    type: string
-    price: Price
-    priceNet: PriceNet
-  }[]
+  fares: IFare[]
   names: {
     age: number
     type: string
@@ -163,8 +162,34 @@ export interface IPackageAvail {
   package: IPackage
   busAvails?: any[]
   ticketAvails?: any[]
-  insuranceAvails?: any[]
-  transferAvails?: any[]
+  insuranceAvails?: IinsuranceAvails[]
+  transferAvails?: ItransferAvails[]
+  serviceOtherAvails?: IserviceOtherAvails[]
+}
+
+export interface IserviceOtherAvails {
+  other: any
+  fares: IFare
+  names: IName[]
+}
+
+export interface ItransferAvails {
+  type: string
+  transfer: any
+  fares: IFare
+  names: IName[]
+}
+
+export interface IinsuranceAvails {
+  insurance: any
+  fares: IFare
+  names: IName[]
+}
+
+// @TODO: namespace avail
+export interface ITicketAvails {
+  ticket: any
+  fares: {point: {amount: number}}[]
 }
 
 export interface IFlightAvails {
@@ -237,9 +262,9 @@ export interface IFlightAvailsRoutesFlights {
 
 export interface Fare {
   type: string
-  description?: string
+  description: string
   price: Price
-  priceNet?: PriceNet
+  priceNet: PriceNet
   code?: string
 }
 
@@ -276,7 +301,7 @@ export interface IinfoteraPackageByIdImage {
 }
 
 export interface IinfoteraPackageById {
-  id: number
+  id: any
   title: string
   description: string
   observation: string

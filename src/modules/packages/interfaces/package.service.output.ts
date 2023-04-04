@@ -107,7 +107,7 @@ interface IpackageDefault {
 }
 
 export interface IPackagesOutPutByIdDetails {
-  id: number
+  id: any
   title?: string
   subtitle: string
   experience: {
@@ -118,7 +118,7 @@ export interface IPackagesOutPutByIdDetails {
     city: string
   }
   packageDefault?: IpackageDefault
-  
+
   hotel?: {
     stars?: number[]
     name?: string
@@ -128,7 +128,8 @@ export interface IPackagesOutPutByIdDetails {
     city?: string
     images?: {
       url: string
-    }[],
+    }[]
+    cancellationPolicies?: any
   }
   metainfos?: {
     icon: string
@@ -146,11 +147,6 @@ export interface IPackagesOutPutByIdDetails {
   }[]
   itinerary?: {
     day: number
-    title: string
-    description: string
-  }[]
-  details: {
-    icon: string
     title: string
     description: string
   }[]

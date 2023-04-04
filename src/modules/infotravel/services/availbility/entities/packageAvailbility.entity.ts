@@ -49,10 +49,10 @@ export interface PriceNet {
 
 export interface Fare {
   type: string
-  description: string
+  description?: string
   price: Price
-  priceNet: PriceNet
-  code: string
+  priceNet?: PriceNet
+  code?: string
   point?: Price
 }
 
@@ -205,19 +205,6 @@ export interface Price3 {
   exchange: number
 }
 
-export interface PriceNet2 {
-  currency: string
-  amount: number
-}
-
-export interface Fare2 {
-  type: string
-  price: Price3
-  priceNet?: PriceNet2
-  description?: string
-  point?: Price
-}
-
 export interface Flight {
   key: string
   airline: Airline
@@ -230,7 +217,7 @@ export interface Flight {
   stopsCount: number
   available: boolean
   segments: Segment[]
-  fares: Fare2[]
+  fares: Fare[]
 }
 
 export interface Route {
@@ -268,12 +255,6 @@ export interface PriceNet3 {
   amount: number
 }
 
-export interface Fare3 {
-  type: string
-  price: Price4
-  priceNet: PriceNet3
-}
-
 export interface Name3 {
   age: number
   type: string
@@ -281,7 +262,7 @@ export interface Name3 {
 
 export interface ServicePackageAvail {
   servicePackage: ServicePackage
-  fares: Fare3[]
+  fares: Fare[]
   names: Name3[]
 }
 
@@ -348,11 +329,15 @@ export interface PackageAvail {
   flightAvails: FlightAvail[]
   servicePackageAvails: ServicePackageAvail[]
   tourAvails: TourAvail[]
-  transferAvails: any
+  transferAvails: TransferAvail[]
   serviceOtherAvails: any
   ticketAvails: any
   insuranceAvails: any
   package: Package
+}
+
+export interface TransferAvail {
+  fares: Fare[]
 }
 
 export interface PackageAvailResponse {

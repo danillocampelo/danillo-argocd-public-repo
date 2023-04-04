@@ -1,4 +1,9 @@
-import {HttpStatus, Injectable} from '@nestjs/common'
+import {
+  ForbiddenException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common'
 import {plainToClass} from 'class-transformer'
 import {UserAuthentication} from '~/common/auth/models/UserAuthentication'
 import {
@@ -14,6 +19,7 @@ import {CheckoutOriginDTO} from './dto/checkout.origin.dto'
 import {CheckRatesDTO} from './dto/checkrate.dto'
 import {CheckRatesInputDto} from './dto/checkrate.input.dto'
 import {FlightInputDTO} from './dto/flight.input.dto'
+import {IAvailbaseOptions} from './dto/IAvailbaseOptions'
 import {CheckoutInfotravelMapper} from './mappers/checkout.infotravel.mapper'
 
 @Injectable()
@@ -41,7 +47,9 @@ export class CheckoutService {
     })
   }
 
-  async getPackageAvailbility(params: AvailbilityQueryDTO) {
+  async getPackageAvailbility(
+    params: AvailbilityQueryDTO,
+  ): Promise<ResponseHttp<IResponse>> {
     const packageInfrotavel =
       await this.infotravelService.package.getPackageById(params.id)
     if (!packageInfrotavel) {
@@ -57,6 +65,12 @@ export class CheckoutService {
       params.clientId,
     )
 
+    if (!client?.id) {
+      return new ResponseHttp<IResponse>({
+        statusCode: HttpStatus.FORBIDDEN,
+        message: 'Member Id not found',
+      })
+    }
     const packageAvailbilityResponse =
       await this.infotravelService.avail.getPackageAvailbility({
         ...params,
@@ -99,7 +113,7 @@ export class CheckoutService {
         occupancy,
       })
 
-    const flightDTO = this.adapter.flightToFlightsDTO(
+    const flightDTO = PackageAvailAdapter.flightToFlightsDTO(
       infoTravelFlights.flightAvail,
     )
 
@@ -126,7 +140,7 @@ export class CheckoutService {
   async availability(options: {
     startDate: string
     endDate: string
-    adults: number
+    occupancy: string
     origin: number
     originIata?: string
     originType?: string
@@ -172,7 +186,7 @@ export class CheckoutService {
       transfers: await this.infotravelService.avail.AvailbilityTransfers({
         start: options.startDate,
         end: options.endDate,
-        occupancy: options.adults,
+        occupancy: options.occupancy,
         destination: options.destination,
         origin: options.origin,
         type: 'ROUND_TRIP',
@@ -180,101 +194,84 @@ export class CheckoutService {
     }
   }
 
-  async availbilityServiceOthers(options: {
-    startDate: any
-    endDate: any
-    adults: any
-    destination: any
-  }) {
+  async availbilityServiceOthers(options: IAvailbaseOptions) {
     return {
       serviceOther: await this.infotravelService.avail.availbilityServiceOthers(
         {
           start: options.startDate,
           end: options.endDate,
-          occupancy: options.adults,
+          occupancy: options.occupancy,
           destination: options.destination,
         },
       ),
     }
   }
 
-  async availbilityFligts(options: {
-    startDate: any
-    origin: any
-    adults: any
-    destination: any
-  }) {
+  async availbilityFligts(options: IAvailbaseOptions) {
     return {
-      flights: await this.infotravelService.avail.availbilityFlights({
-        start: options.startDate,
-        origin: options.origin,
-        occupancy: options.adults,
-        destination: options.destination,
-      }),
+      flights: PackageAvailAdapter.flightToFlightsDTO(
+        (
+          await this.infotravelService.avail.availbilityFlights({
+            start: options.startDate,
+            end: options.endDate,
+            origin: 'GRU', //options.origin, // GRU
+            occupancy: options.occupancy,
+            destination: 'SDU', // options.destination, // SDU
+          })
+        ).flightAvail,
+      ),
     }
   }
 
-  async availbilityTickets(options: {
-    startDate: any
-    endDate: any
-    adults: any
-    destination: any
-  }) {
+  async availbilityTickets(options: IAvailbaseOptions) {
     return {
       tickets: await this.infotravelService.avail.availbilityTickets({
         start: options.startDate,
         end: options.endDate,
-        occupancy: options.adults,
+        occupancy: options.occupancy,
         destination: options.destination,
       }),
     }
   }
 
-  async availbilityServices(options: {
-    startDate: string
-    endDate: string
-    adults: number
-    destination: number
-  }) {
+  async availbilityServices(options: IAvailbaseOptions) {
     return {
       services: await this.infotravelService.avail.availbilityService({
         start: options.startDate,
         end: options.endDate,
-        occupancy: options.adults,
+        occupancy: options.occupancy,
         destination: options.destination,
       }),
     }
   }
 
-  async availbilityActivity(options: {
-    startDate: string
-    endDate: string
-    adults: number
-    destination: number
-  }) {
+  async availbilityActivity(options: IAvailbaseOptions) {
     return {
-      activity: await this.infotravelService.avail.availbilityActivity({
-        start: options.startDate,
-        end: options.endDate,
-        occupancy: options.adults,
-        destination: options.destination,
-      }),
+      tours: this.adapter.toursAvailsToTours(
+        (
+          await this.infotravelService.avail.availbilityActivity({
+            start: options.startDate,
+            end: options.endDate,
+            occupancy: options.occupancy,
+            destination: options.destination,
+          })
+        ).tourAvail,
+      ),
     }
   }
 
-  async availbilityHotel(options: {
-    startDate: any
-    endDate: any
-    adults: any
-    destination: any
-  }) {
+  async availbilityHotel(options: IAvailbaseOptions) {
     return {
-      hotel: await this.infotravelService.avail.AvailbilityHotel({
-        start: options.startDate,
-        end: options.endDate,
-        occupancy: options.adults,
-        destination: options.destination,
-      }),
+      hotel: await this.adapter.hotelAvailToHotelDTO(
+        (
+          await this.infotravelService.avail.AvailbilityHotel({
+            start: options.startDate,
+            end: options.endDate,
+            occupancy: options.occupancy,
+            destination: options.destination,
+          })
+        ).hotelAvail,
+      ),
     }
   }
 }

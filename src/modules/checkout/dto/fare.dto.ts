@@ -23,4 +23,6 @@ export class Fare {
 
   @ApiProperty({type: Price})
   price: Price
+
+  point: {amount: number}
 }

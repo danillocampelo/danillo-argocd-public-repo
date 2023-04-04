@@ -15,4 +15,8 @@ export class LocalityService {
 
     return this.localityDatasource.search(query.toLowerCase())
   }
+
+  public async getById(id: string): Promise<Locality> {
+    return this.localityDatasource.findOne(id)
+  }
 }

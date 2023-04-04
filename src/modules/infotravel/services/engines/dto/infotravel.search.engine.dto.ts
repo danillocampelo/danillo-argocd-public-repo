@@ -17,3 +17,12 @@ export interface InfotravelSearchEngineDTO {
     },
   ]
 }
+
+export interface InfotravelSearchEnginePeriodsDTO {
+  periods: [
+    {
+      start: Date
+      endDates: Date[]
+    },
+  ]
+}

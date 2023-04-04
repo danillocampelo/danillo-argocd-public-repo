@@ -1,4 +1,5 @@
 import {calculateMiles} from '~/helpers/miles'
+import {removeArrayEmptyAvalues} from '~/helpers/remove-empty-values'
 import {DetailType} from '~/modules/database/entity/itemDetail.entity'
 import {
   IFare,
@@ -7,6 +8,7 @@ import {
   IHotelDetailImage,
   IinfoteraPackageById,
   IinfoteraPackageByIdImage,
+  InfoTravelPackageAvailbility,
   IroomGroup,
   IRooms,
   ITourAvails,
@@ -21,6 +23,7 @@ import {
   IPackagesOutPutByIdDetails,
   IPackagesOutPutList,
 } from '~/modules/packages/interfaces/package.service.output'
+import {sumAvailPoints} from '~/new/core/package/common'
 import {CustomPackageListDTO} from '~/new/ports/driven/api/dto/customPackageDTO'
 
 export function getItinerary(
@@ -106,6 +109,8 @@ export function parseToIPackagesOutPutByIdDetails(
   externalPackage: IinfoteraPackageById,
   packageWithRelations: IPackageWithRelations,
   hotels: IUtilityHotelDetail[],
+  points?: number,
+  cancellationPolicies?: any,
 ): IPackagesOutPutByIdDetails {
   const innerHotels = hotels.map((item) => item.hotel)
   const experience = packageWithRelations.experiences?.length && {
@@ -125,31 +130,43 @@ export function parseToIPackagesOutPutByIdDetails(
     destination: {
       city: getCityFromExternalData(externalPackage),
     },
-    packageDefault: getPackageDefault(externalPackage, packageWithRelations),
     hotel: !!innerHotels.length
-      ? parseIHotelDetailToIPackagesOutPutByIdDetails(innerHotels)
+      ? parseIHotelDetailToIPackagesOutPutByIdDetails(
+          innerHotels,
+          cancellationPolicies,
+        )
       : {},
-    metainfos: getItemDetailByTypeMetainfos(packageWithRelations),
+    packageDefault: getPackageDefault(
+      {
+        days: externalPackage.destinations[0].days,
+        nights: externalPackage.destinations[0].nights,
+      },
+      packageWithRelations,
+      points,
+    ),
     texts: getItemDetailByTypeTexts(packageWithRelations),
     cover: packageImages && {url: packageImages[0].big},
     highlight: packageWithRelations.highlight,
     images: getImagesFromIinfoteraPackageById(packageImages),
     itinerary: parseToPackagesOutPutByIdDetailsItinerary(externalPackage),
-    details: getItemDetailByTypeInformationItens(packageWithRelations),
   }
 }
 
 function getPackageDefault(
-  externalPackage: IinfoteraPackageById,
+  externalData: {days: number; nights: number},
   packageWithRelations: IPackageWithRelations,
+  points?: number,
 ) {
   const price = packageWithRelations?.price ?? DEFAULT_PRICE
-  return {
-    days: externalPackage.destinations?.[0]?.days,
-    nights: externalPackage.destinations?.[0]?.nights,
+  const res = {
+    days: externalData.days,
+    nights: externalData.nights,
     price,
-    miles: calculateMiles(price),
+  } as any
+  if (points) {
+    res.miles = points
   }
+  return res
 }
 
 function parseToPackagesOutPutByIdDetailsItinerary(
@@ -166,6 +183,7 @@ function parseToPackagesOutPutByIdDetailsItinerary(
 
 function parseIHotelDetailToIPackagesOutPutByIdDetails(
   hotels: IUtilityHotelDetail['hotel'][],
+  cancellationPolicies?: any,
 ): IPackagesOutPutByIdDetails['hotel'] {
   return {
     stars: formatHotelsStars(hotels.map((item) => item.stars)) || [
@@ -183,21 +201,8 @@ function parseIHotelDetailToIPackagesOutPutByIdDetails(
     images: hotels[0]?.images?.map((img): {url: string} => {
       return {url: img.large}
     }),
+    cancellationPolicies: cancellationPolicies,
   }
-}
-
-function getItemDetailByTypeMetainfos(
-  packageWithRelations: IPackageWithRelations,
-): {icon: string; title: string}[] {
-  return packageWithRelations.itemDetail
-    .filter((item) => item.type === DetailType.METAINFOS)
-    .map((item) => {
-      return {
-        icon: item.icon,
-        title: item.title,
-        description: item.description,
-      }
-    })
 }
 
 function getItemDetailByTypeTexts(
@@ -213,24 +218,13 @@ function getItemDetailByTypeTexts(
     }) as any
 }
 
-function getItemDetailByTypeInformationItens(
-  packageWithRelations: IPackageWithRelations,
-): {icon: string; title: string; description: string}[] {
-  return packageWithRelations.itemDetail
-    .filter((item) => item.type === DetailType.INFORMATION_ITENS)
-    .map((item) => {
-      return {
-        icon: item.icon,
-        title: item.title,
-        description: item.description,
-      }
-    })
-}
-
 export function formatHotelsStars(stars: number[]): number[] {
   if (stars.length > 1) {
     const uniqueStars = Array.from(new Set(stars))
-    return [Math.min(...uniqueStars), Math.max(...uniqueStars)]
+    return removeArrayEmptyAvalues([
+      Math.min(...uniqueStars),
+      Math.max(...uniqueStars),
+    ])
   }
   return stars
 }
@@ -251,7 +245,7 @@ export function parseToIPackagesOutPutList(
 ): IPackagesOutPutList[] {
   return packages.map((pck) => {
     const externalData = packageExternalData.find(
-      (data) => data.id === Number(pck.externalId),
+      (data) => data.id == pck.externalId,
     )
     return {
       id: Number(pck.externalId),
@@ -264,7 +258,13 @@ export function parseToIPackagesOutPutList(
       destination: {
         city: getCityFromExternalData(externalData),
       },
-      packageDefault: getPackageDefault(externalData, pck),
+      packageDefault: getPackageDefault(
+        {
+          days: externalData.destinations[0].days,
+          nights: externalData.destinations[0].nights,
+        },
+        pck,
+      ),
       cover: {
         url: externalData?.images?.[0]?.big,
       },
@@ -303,5 +303,43 @@ export const parseToCustomPackageList = (
   }
 }
 
-export const getCityFromExternalData = (externalData: IinfoteraPackageById) =>
-  externalData.destinations?.[0]?.destination?.name
+export function getCityFromExternalData(
+  externalData: IinfoteraPackageById,
+): string {
+  return externalData.destinations[0].destination.name
+}
+
+export function parseToIPackagesAvailOutPutList(
+  packages: IPackageWithRelations[],
+  availbilityPackages: PromiseFulfilledResult<InfoTravelPackageAvailbility>[],
+): IPackagesOutPutList[] {
+  return packages.map((pck) => {
+    const availbilityPackage = availbilityPackages.find(
+      (data) =>
+        data.value.packageAvails[0].package.id == Number(pck.externalId),
+    )
+    const availPackage = availbilityPackage?.value.packageAvails[0].package
+    const points = sumAvailPoints(availbilityPackage.value)
+    return {
+      id: Number(pck.externalId),
+      title: availPackage.name,
+      experience: {
+        id: pck.experiences?.[0]?.id,
+        name: pck.experiences?.[0]?.name,
+        description: pck.experiences?.[0]?.description,
+      },
+      destination: {
+        city: availPackage.destination,
+      },
+      packageDefault: getPackageDefault(
+        {days: availPackage.days, nights: availPackage.nights},
+        pck,
+        points,
+      ),
+      cover: {
+        url: availPackage.images[0].large,
+      },
+      highlight: pck.highlight,
+    }
+  })
+}

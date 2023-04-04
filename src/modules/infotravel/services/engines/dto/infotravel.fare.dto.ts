@@ -8,4 +8,5 @@ export interface InfotravelFareDTO {
 export interface InfotravelPriceDTO {
   currency: string
   amount: number
+  exchange: number
 }

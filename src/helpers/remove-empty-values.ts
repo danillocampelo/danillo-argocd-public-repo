@@ -6,3 +6,7 @@ export const removeEmptyValues = (object: any) => {
     }
   }
 }
+
+export function removeArrayEmptyAvalues<Type>(array: Type[]): Type[] {
+  return array.filter(Boolean)
+}

@@ -1,4 +1,4 @@
-import {ValidationPipe} from '@nestjs/common'
+import {LogLevel, ValidationPipe} from '@nestjs/common'
 import {ConfigService} from '@nestjs/config'
 import {NestFactory} from '@nestjs/core'
 import {MicroserviceOptions} from '@nestjs/microservices'
@@ -7,8 +7,12 @@ import {AppModule} from './app.module'
 import {SqsTransporter} from './new/ports/output/externalSources/aws/aws.custom.transporter'
 
 async function bootstrap() {
+  const logger: LogLevel[] =
+    process.env.NODE_ENV === 'production'
+      ? ['log', 'error']
+      : ['log', 'error', 'warn', 'debug', 'verbose']
   const app = await NestFactory.create(AppModule, {
-    logger: ['log', 'error', 'warn', 'debug', 'verbose'],
+    logger: logger,
   })
   const configService = new ConfigService()
 

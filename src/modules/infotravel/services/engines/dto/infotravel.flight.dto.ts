@@ -2,6 +2,7 @@ import {InfotravelFareDTO} from './infotravel.fare.dto'
 import {InfotravelTravellerDTO} from './infotravel.traveller.dto'
 
 export interface InfotravelBookingFlightsDTO {
+  locators: []
   flights: InfotravelFlightDTO[]
   names: InfotravelTravellerDTO[]
   fares: InfotravelFareDTO[]

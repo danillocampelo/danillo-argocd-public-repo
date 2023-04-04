@@ -180,17 +180,21 @@ export class PackageService {
       })
     }
 
-    const hotelKeyDetails = infotravel?.destinations[0].packageHotels.map(hotel => hotel.keyDetail)
-    const hotels = await Promise.all(hotelKeyDetails.map(
-      async (keyDetail) => this.infotravelService.infoTravelGetHotelByKeyDetail(keyDetail) 
-      ))
+    const hotelKeyDetails = infotravel?.destinations[0].packageHotels.map(
+      (hotel) => hotel.keyDetail,
+    )
+    const hotels = await Promise.all(
+      hotelKeyDetails.map(async (keyDetail) =>
+        this.infotravelService.infoTravelGetHotelByKeyDetail(keyDetail),
+      ),
+    )
 
     return new ResponseHttp<IResponse>({
       statusCode: 200,
       entity: parseToIPackagesOutPutByIdDetails(
         infotravel,
         packageWithRelations || ({} as any),
-       hotels,
+        hotels,
       ),
     })
   }

@@ -23,6 +23,7 @@ import {PaymentService} from './payment/payment.service'
 import {PaymentQueue} from './payment/queue/payment.queue'
 import {ReserveService} from './reserve/reserve.service'
 import {UserService} from './user/user.service'
+import { PackageService } from './package/package.service'
 
 const internalProviders = [
   PaymentService,
@@ -30,7 +31,7 @@ const internalProviders = [
   SmilesService,
   ReserveService,
   BookingReserveService,
-  LocalityService,
+  LocalityService
 ]
 
 @Module({

@@ -1,5 +1,11 @@
 import {InfotravelBookingFlightsDTO} from './infotravel.flight.dto'
 import {InfotravelHotelDTO} from './infotravel.hotel.dto'
+import {InfotravelToursDto} from '~/modules/infotravel/engines/dto/infotravel.tours.dto'
+import {InfotravelServicePackagesDto} from '~/modules/infotravel/engines/dto/infotravel.service.packages.dto'
+import {InfotravelTicketsDto} from '~/modules/infotravel/engines/dto/infotravel.tickets.dto'
+import {InfotravelTransfersDto} from '~/modules/infotravel/engines/dto/infotravel.transfers.dto'
+import {InfotravelInsurancesDto} from '~/modules/infotravel/engines/dto/infotravel.insurance.dto'
+import {InfotravelServiceOthersDto} from '~/modules/infotravel/engines/dto/infotravel.services.others.dto'
 
 export enum BookingStatus {
   CONFIRMED = 'CONFIRMED',
@@ -24,7 +30,7 @@ export interface InfotravelBookingDetailDTO {
   expirationDate: Date
   urlVoucher: string
   bookingPackages?: InfotravelBookingPackagesDTO[]
-  bookingHotels?: InfotravelHotelDTO[]
+  bookingHotels: InfotravelHotelDTO[]
 }
 
 export interface InfotravelSearchBooking {
@@ -41,6 +47,12 @@ export interface InfotravelSearchBooking {
 export interface InfotravelBookingPackagesDTO {
   bookingHotels: InfotravelHotelDTO[]
   bookingFlights?: InfotravelBookingFlightsDTO[]
+  bookingInsurances?: InfotravelInsurancesDto[]
+  bookingTours?: InfotravelToursDto[]
+  bookingServicePackages?: InfotravelServicePackagesDto[]
+  bookingTickets?: InfotravelTicketsDto[]
+  bookingTransfers?: InfotravelTransfersDto[]
+  bookingServiceOthers?: InfotravelServiceOthersDto[]
   package?: InfotravelPackageDTO
 }
 

@@ -25,4 +25,10 @@ export class LocalityRepository implements LocalityDatasource {
       this.adapter.toLocalityFromLocalityEntity(entity),
     )
   }
+
+  public async findOne(id: string): Promise<Locality | undefined> {
+    const result = await this.repository.findOne({where: {externalId: id}})
+
+    return result && this.adapter.toLocalityFromLocalityEntity(result)
+  }
 }

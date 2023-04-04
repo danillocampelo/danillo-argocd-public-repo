@@ -8,14 +8,16 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common'
 import {ApiQuery, ApiResponse, ApiTags} from '@nestjs/swagger'
+import {AuthGuardDefaultUser} from '~/common/auth/AuthGuard'
+import {CurrentUser} from '~/common/auth/CurrentUser'
+import {UserAuthentication} from '~/common/auth/models/UserAuthentication'
 import {
   IResponse,
   ResponseHttp,
 } from '~/common/responseHttp/responseHttp.entity'
-import {CreatePackageDto} from '~/modules/packages/dto/package.create.dto'
-import {PackageEntity} from '~/modules/packages/entity/package.entity'
 import {packageOutputEntity} from '~/modules/packages/entity/package.output.entity'
 import {PackageServiceCreateUseCase} from '~/new/core/package/package.create.useCase'
 import {PackageServiceCustomListUseCase} from '~/new/core/package/package.customPackage.list.useCase'
@@ -24,6 +26,10 @@ import {PackageServiceGetByIdUseCase} from '~/new/core/package/package.getById.u
 import {PackageServiceListUseCase} from '~/new/core/package/package.list.useCase'
 import {PackageServiceUpdateUseCase} from '~/new/core/package/package.update.useCase'
 import {CustomPackageListDTO} from '~/new/ports/driven/api/dto/customPackageDTO'
+import {PackageEntity} from '~/new/ports/input/api/package/dto/package.entity'
+import {CreatePackageDto} from './dto/package.create.dto'
+import {packageQueryParamsDTO} from './dto/package.list.input.dto'
+import {PackageService} from '../../../../core/package/package.service'
 @Controller('packages')
 export class PackageController {
   constructor(
@@ -33,6 +39,7 @@ export class PackageController {
     private readonly updateUseCase: PackageServiceUpdateUseCase,
     private readonly listUseCase: PackageServiceListUseCase,
     private readonly listCustomCase: PackageServiceCustomListUseCase,
+    private readonly packageService: PackageService,
   ) {}
 
   @ApiTags('packages')
@@ -41,32 +48,22 @@ export class PackageController {
   @ApiQuery({name: 'highlight', type: Boolean, required: false})
   @ApiQuery({name: 'limit', type: Number, example: 10, required: false})
   @ApiQuery({name: 'Offset', type: Number, example: 0, required: false})
-  @ApiQuery({
-    name: 'onlyAvailable',
-    type: Boolean,
-    example: false,
-    required: false,
-    description:
-      'If true, endpoinnt will only return packages with availability',
-  })
   @ApiResponse({
     status: 200,
     type: [PackageEntity],
   })
-  async getPackagesWithPagination(
-    @Query('experiences') experiences: number[],
-    @Query('highlight') highlight: boolean,
-    @Query('limit') limit: string,
-    @Query('Offset') Offset: string,
-    @Query('onlyAvailable') onlyAvailable: boolean,
+  @UseGuards(AuthGuardDefaultUser)
+  async list(
+    @Query() queryParams: packageQueryParamsDTO,
+    @CurrentUser() user: UserAuthentication,
   ): Promise<any> {
     return new ResponseHttp({
       entity: this.listUseCase.handler(
-        experiences,
-        highlight,
-        limit,
-        Offset,
-        onlyAvailable,
+        user.clientId,
+        queryParams.experiences,
+        queryParams.highlight,
+        queryParams.limit,
+        queryParams.Offset,
       ),
     })
   }
@@ -119,7 +116,36 @@ export class PackageController {
     description: 'search package by id',
     type: packageOutputEntity,
   })
-  async getPackageByIdSmile(@Param('id') id: string): Promise<IResponse> {
-    return await this.getByIdUseCase.handler({id})
+  @UseGuards(AuthGuardDefaultUser)
+  async getPackageByIdSmile(
+    @Param('id') id: string,
+    @CurrentUser() user: UserAuthentication,
+    @Query('ignoreAvailability') ignoreAvailability: string,
+  ): Promise<IResponse | any> {
+    return await this.getByIdUseCase.handler({
+      id,
+      user: user.clientId,
+      ignoreAvailability: ignoreAvailability === 'true',
+    })
+  }
+
+  @ApiTags('packages/')
+  @Get(':id/fares/default')
+  @ApiResponse({
+    status: 200,
+    description: 'search package by id',
+    type: packageOutputEntity,
+  })
+  @UseGuards(AuthGuardDefaultUser)
+  async getPackageDefaultFares(
+    @Param('id') id: string,
+    @CurrentUser() user: UserAuthentication,
+  ): Promise<IResponse | any> {
+    return new ResponseHttp({
+      entity: await this.packageService.getDefaultFares({
+        id,
+        clientId: user.clientId,
+      }),
+    })
   }
 }

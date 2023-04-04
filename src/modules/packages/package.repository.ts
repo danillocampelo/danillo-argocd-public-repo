@@ -97,26 +97,19 @@ export class PackageRepository {
   }
 
   async packageByExternalId(externalId: string): Promise<Package> {
-    return await this.repo.findOneBy({externalId})
+    return await this.repo.findOne({
+      where: {externalId},
+      relations: ['itemDetail'],
+    })
   }
 
-  async bulkSaveOrUpdate(input: PackageTransactionInput[]) {
-    return await this.repo.manager.transaction(
-      async (transactionalEntityManager) => {
-        for await (const record of input) {
-          if (record.command === TransactionCommand.SAVE) {
-            await transactionalEntityManager.save(Package, record.package)
-          }
-
-          if (record.command === TransactionCommand.UPDATE) {
-            await transactionalEntityManager.update(
-              Package,
-              {id: record.package.id},
-              record.package,
-            )
-          }
-        }
-      },
-    )
+  async bulkSave(input: Partial<Package>[]) {
+    return this.repo.manager.transaction(async (transactionalEntityManager) => {
+      await Promise.all(
+        input.map(async (pck) => {
+          await transactionalEntityManager.save(Package, pck)
+        }),
+      )
+    })
   }
 }

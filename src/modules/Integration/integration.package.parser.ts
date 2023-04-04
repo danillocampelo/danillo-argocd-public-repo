@@ -44,6 +44,9 @@ export class IntegrationPackageParser {
     record: any,
   ): Promise<Partial<Package>> {
     const mainItemDetails = this.handleMainItemDetails(record)
+    if (!record[packageCSVDictionary.EXERTNAL_ID]) {
+      return undefined
+    }
 
     const parsedPackage = {
       externalId: record[packageCSVDictionary.EXERTNAL_ID],
@@ -96,15 +99,15 @@ export class IntegrationPackageParser {
 
     if (!!record[packageCSVDictionary.SECOND_DESCRIPTION]) {
       mainItemDetails.push({
-        description: record[packageCSVDictionary.FIRST_DESCRIPTION],
+        description: record[packageCSVDictionary.SECOND_DESCRIPTION],
         type: DetailType.DETAIL_2,
       })
     }
 
     if (!!record[packageCSVDictionary.THIRD_DESCRIPTION]) {
       mainItemDetails.push({
-        description: record[packageCSVDictionary.FIRST_DESCRIPTION],
-        type: DetailType.DETAIL_2,
+        description: record[packageCSVDictionary.THIRD_DESCRIPTION],
+        type: DetailType.DETAIL_3,
       })
     }
 
@@ -112,8 +115,12 @@ export class IntegrationPackageParser {
   }
 
   private async handleExperiences(name: string): Promise<Experience> {
-    if (!!name) {
-      return this.experiencesRepository.getExperienceByName(name) as any
+    if (name) {
+      const experience = await this.experiencesRepository.getExperienceByName(
+        name,
+      )
+      // console.log("Experience",experience)
+      return experience
     }
   }
 

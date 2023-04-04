@@ -87,6 +87,9 @@ export class BookingDatasource {
     const {duration, firstCheckIn} = this.mapDuration(hotels)
 
     const hotelsDTO = this.mapHotels(hotelDetails, hotels)
+    const urlMock =
+      'https://doc.infotravel.com.br/html/v1/arquivo/SMILES?tipo=10&idReserva=1878&chave=2CBCA44843A864533EC05B321AE1F9D1&lang=null'
+
     const res: BookingDetailDTO = {
       id: booking.id.toString(),
       package: {
@@ -98,6 +101,11 @@ export class BookingDatasource {
       duration: duration,
       destination: packageDetails.destinations?.[0]?.destination?.name,
       travellers: this.mapTravellersFromHotels(hotels),
+      voucher: {
+        url: urlMock,
+        redirect:
+          urlMock.slice(0, 30) + 'download' + urlMock.slice(34, urlMock.length),
+      },
       hotels: hotelsDTO,
       rooms: hotelsDTO.reduce((rooms, hotel) => [...rooms, ...hotel.rooms], []),
       flights: this.mapFlights(flights),
@@ -167,6 +175,7 @@ export class BookingDatasource {
         image: hotel.images?.[0]?.large,
         title: hotel.name,
         description: hotel.description,
+        locators: hotel.locators,
         facilities:
           hotel.facilities?.reduce(
             (acc, facilitiy) => [...facilitiy.items, ...acc],

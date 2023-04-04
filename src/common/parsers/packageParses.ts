@@ -1,4 +1,3 @@
-import {calculateMiles} from '~/helpers/miles'
 import {
   IFare,
   IFlightAvails,
@@ -118,15 +117,17 @@ export function parseToIPackagesOutPutByIdDetails(
   externalPackage: IinfoteraPackageById,
   packageWithRelations: IPackageWithRelations,
   hotels: IUtilityHotelDetail[],
+  points?: number,
 ): IPackagesOutPutByIdDetails {
-  const innerHotels = hotels.map(item => item.hotel)
+  const innerHotels = hotels.map((item) => item.hotel)
   const experience = packageWithRelations.experiences?.length && {
     id: packageWithRelations.experiences?.[0]?.id,
     name: packageWithRelations.experiences?.[0]?.name,
     description: packageWithRelations.experiences?.[0]?.description,
   }
 
-  const packageImages = externalPackage?.images || mapHotelImages(innerHotels[0]?.images)
+  const packageImages =
+    externalPackage?.images || mapHotelImages(innerHotels[0]?.images)
 
   return {
     id: externalPackage?.id,
@@ -136,32 +137,40 @@ export function parseToIPackagesOutPutByIdDetails(
     destination: {
       city: getCityFromExternalData(externalPackage),
     },
-    packageDefault: getPackageDefault(packageWithRelations, externalPackage),
-    //ADEQUAR PARA UMA POSSIBILIDADE DE MAIS DE UM HOTEL
-    hotel: !!hotels.length ? parseIHotelDetailToIPackagesOutPutByIdDetails(innerHotels) : {},
-    metainfos: getItemDetailByTypeMetainfos(packageWithRelations),
+    packageDefault: getPackageDefault(
+      packageWithRelations,
+      externalPackage,
+      points,
+    ),
+    hotel: !!hotels.length
+      ? parseIHotelDetailToIPackagesOutPutByIdDetails(innerHotels)
+      : {},
+    // metainfos: getItemDetailByTypeMetainfos(packageWithRelations),
     texts: getItemDetailByTypeTexts(packageWithRelations),
     cover: packageImages && {url: packageImages[0].big},
     highlight: packageWithRelations.highlight,
     images: getImagesFromIinfoteraPackageById(packageImages),
     itinerary: parseToPackagesOutPutByIdDetailsItinerary(externalPackage),
-    details: getItemDetailByTypeInformationItens(packageWithRelations),
   }
 }
 
 function getPackageDefault(
   packageWithRelations: IPackageWithRelations,
   externalPackage?: IinfoteraPackageById,
+  points?: number,
 ) {
   const price = packageWithRelations?.price ?? DEFAULT_PRICE
-  return {
+  const res = {
     price,
-    miles: calculateMiles(price),
     ...(!!externalPackage && {
       days: externalPackage.destinations?.[0]?.days,
       nights: externalPackage.destinations?.[0]?.nights,
     }),
+  } as any
+  if (points) {
+    res.miles = points
   }
+  return res
 }
 
 function parseToPackagesOutPutByIdDetailsItinerary(
@@ -185,7 +194,7 @@ function parseIHotelDetailToIPackagesOutPutByIdDetails(
     description: hotels[0].description,
     adress: hotels[0].address.address,
     city: hotels[0].address.city.name,
-    facilities: 
+    facilities:
       hotels[0].facilities?.[0]?.items?.map((item) => {
         return {
           id: item.id,
@@ -198,19 +207,19 @@ function parseIHotelDetailToIPackagesOutPutByIdDetails(
   }
 }
 
-function getItemDetailByTypeMetainfos(
-  packageWithRelations: IPackageWithRelations,
-): {icon: string; title: string}[] {
-  return packageWithRelations.itemDetail
-    .filter((item) => item.type === DetailType.METAINFOS)
-    .map((item) => {
-      return {
-        icon: item.icon,
-        title: item.title,
-        description: item.description,
-      }
-    })
-}
+// function getItemDetailByTypeMetainfos(
+//   packageWithRelations: IPackageWithRelations,
+// ): {icon: string; title: string}[] {
+//   return packageWithRelations.itemDetail
+//     .filter((item) => item.type === DetailType.METAINFOS)
+//     .map((item) => {
+//       return {
+//         icon: item.icon,
+//         title: item.title,
+//         description: item.description,
+//       }
+//     })
+// }
 
 function getItemDetailByTypeTexts(
   packageWithRelations: IPackageWithRelations,
@@ -225,20 +234,6 @@ function getItemDetailByTypeTexts(
     }) as any
 }
 
-function getItemDetailByTypeInformationItens(
-  packageWithRelations: IPackageWithRelations,
-): {icon: string; title: string; description: string}[] {
-  return packageWithRelations.itemDetail
-    .filter((item) => item.type === DetailType.INFORMATION_ITENS)
-    .map((item) => {
-      return {
-        icon: item.icon,
-        title: item.title,
-        description: item.description,
-      }
-    })
-}
-
 function getImagesFromIinfoteraPackageById(
   images: IinfoteraPackageByIdImage[],
 ): {url: string; type: number}[] {
@@ -250,10 +245,10 @@ function getImagesFromIinfoteraPackageById(
 }
 
 function formatHotelsStars(hotels: IUtilityHotelDetail['hotel'][]): number[] {
-  const stars = hotels.map(hotel => hotel.stars)
-  if(stars.length > 1) {
+  const stars = hotels.map((hotel) => hotel.stars)
+  if (stars.length > 1) {
     const uniqueStars = Array.from(new Set(stars))
-    return [Math.min(...uniqueStars),Math.max(...uniqueStars)]
+    return [Math.min(...uniqueStars), Math.max(...uniqueStars)]
   }
   return stars
 }
@@ -314,9 +309,8 @@ export const parseToPakcageWithouExternalData = (
       name: packageWithRelations.experiences?.[0]?.name,
     },
     highlight: packageWithRelations.highlight,
-    metainfos: getItemDetailByTypeMetainfos(packageWithRelations),
+    // metainfos: getItemDetailByTypeMetainfos(packageWithRelations),
     texts: getItemDetailByTypeTexts(packageWithRelations),
-    details: getItemDetailByTypeInformationItens(packageWithRelations),
   }
 }
 

@@ -4,4 +4,8 @@ export interface InfotravelTravellerDTO {
   birth: string
   age: number
   type: 'ADT' | 'CHD' | 'INF'
+  document: {
+    number: number
+    type: string
+  }
 }

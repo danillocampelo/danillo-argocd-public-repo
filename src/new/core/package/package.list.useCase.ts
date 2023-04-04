@@ -3,12 +3,19 @@ import {
   IResponse,
   ResponseHttp,
 } from '~/common/responseHttp/responseHttp.entity'
-import {IinfoteraPackageById} from '~/modules/infotravel/infotravel.interfaces'
+import {
+  IinfoteraPackageById,
+  InfoTravelPackageAvailbility,
+} from '~/modules/infotravel/infotravel.interfaces'
 import {InfotravelService} from '~/modules/infotravel/infotravel.service'
 import {IPackageWithRelations} from '~/modules/packages/interfaces/package.interface'
 import {IPackagesOutPutList} from '~/modules/packages/interfaces/package.service.output'
 import {PackageRepository} from '~/new/adapters/output/package/package.repository'
-import {parseToIPackagesOutPutList} from '~/new/adapters/output/package/parse'
+import {
+  parseToIPackagesAvailOutPutList,
+  parseToIPackagesOutPutList,
+} from '~/new/adapters/output/package/parse'
+import {mountPackageAvailParams} from './common'
 
 @Injectable()
 export class PackageServiceListUseCase {
@@ -18,11 +25,11 @@ export class PackageServiceListUseCase {
   ) {}
 
   async handler(
+    user: string,
     experiences?: number[] | string | string[] | any,
     highlight?: boolean,
     limit?: string,
     Offset?: string,
-    onlyAvailable?: boolean,
   ): Promise<IResponse> {
     const where = {} as {highlight?: boolean; experiences?: {ids: number[]}}
     if (experiences) where.experiences = this.getExperiencesIds(experiences)
@@ -40,15 +47,16 @@ export class PackageServiceListUseCase {
       ),
     )
 
-    if (onlyAvailable) {
-      return new ResponseHttp<IResponse>({
-        statusCode: 200,
-        entity: await this.getManyPackageAvail(
-          packages as any,
-          packageExternalData,
-        ),
-      })
-    }
+    // return new ResponseHttp<IResponse>({
+    //   statusCode: 200,
+    //   entity: await this.getManyPackageAvail(
+    //     packages as any,
+    //     packageExternalData,
+    //     user,
+    //   ),
+    // })
+
+    //TODO: ajustar para considerar a chamada ao package availability
     return parseToIPackagesOutPutList(
       packages as any,
       packageExternalData.map(
@@ -60,13 +68,41 @@ export class PackageServiceListUseCase {
   async getManyPackageAvail(
     packages: IPackageWithRelations[],
     packageExternalData: PromiseSettledResult<IinfoteraPackageById>[],
+    user: string,
   ): Promise<IPackagesOutPutList[]> {
-    const packageAvails = await Promise.allSettled(
+    const infoteraAvailsPackages = await this.makePackageAvails(
+      packageExternalData,
+      user,
+    )
+
+    const availablePackages = packages.filter((pck) => {
+      {
+        return infoteraAvailsPackages.find(
+          (item: any) =>
+            item.value.packageAvails && item.value?.id == pck.externalId,
+        )
+      }
+    })
+    const x = infoteraAvailsPackages.filter(
+      (v) => v.status === 'fulfilled' && v.value.packageAvails,
+    )
+
+    return parseToIPackagesAvailOutPutList(
+      availablePackages,
+      x as PromiseFulfilledResult<InfoTravelPackageAvailbility>[],
+    )
+  }
+
+  private async makePackageAvails(
+    packageExternalData: PromiseSettledResult<IinfoteraPackageById>[],
+    user: string,
+  ): Promise<PromiseSettledResult<InfoTravelPackageAvailbility>[]> {
+    return await Promise.allSettled(
       packageExternalData.reduce((acc, val) => {
         if (val.status == 'fulfilled' && val.value.hasOwnProperty('id')) {
-          const re = new Promise(async (resolve, reject) => {
+          const re = new Promise(async (resolve) => {
             resolve({
-              ...(await this.getPackageAvails(val.value)),
+              ...(await this.getPackageAvails(val.value, user)),
               id: val.value.id,
             })
           })
@@ -75,29 +111,21 @@ export class PackageServiceListUseCase {
         return acc
       }, [] as any),
     )
+  }
 
-    const availablePackages = packages.filter(
-      (pck) =>
-        !!packageAvails.find((item: any) => item.value?.id === pck.externalId),
+  private getPackageAvails(infotravel: IinfoteraPackageById, user) {
+    return this.infotravelService.avail.getPackageAvailbility(
+      mountPackageAvailParams(infotravel, user),
     )
-
-    return parseToIPackagesOutPutList(availablePackages, packageAvails as any)
   }
 
-  private getPackageAvails(infotravel: IinfoteraPackageById) {
-    return this.infotravelService.infoTravelSearchPackage({
-      origin: 8253,
-      originIata: 'GRU',
-      originType: 'A',
-      start: new Date('2023-02-08').toJSON(),
-      occupancy: 2,
-      destination: infotravel.destinations[0].destination.id,
-      destinationType: infotravel.destinations[0].destination.type,
-      packageType: 'hotel_flight',
-    })
-  }
-
-  getExperiencesIds(experiences: any): {ids: number[]} {
+  /**
+   *
+   * @param experiences
+   * @example '1,2,3,4'
+   * @returns [1,2,3,4]
+   */
+  getExperiencesIds(experiences: string): {ids: number[]} {
     return {
       ids: Array.isArray(experiences)
         ? experiences.reduce((e, v) => {

@@ -1,8 +1,11 @@
 import {ApiProperty} from '@nestjs/swagger'
-import {Experience} from '../../database/entity/experience.entity'
-import {ItemDetail} from '../../database/entity/itemDetail.entity'
-import {Package, Status} from '../../database/entity/package.entity'
-import {Trivia} from '../../database/entity/trivia.entity'
+import {Experience} from '../../../../../../modules/database/entity/experience.entity'
+import {ItemDetail} from '../../../../../../modules/database/entity/itemDetail.entity'
+import {
+  Package,
+  Status,
+} from '../../../../../../modules/database/entity/package.entity'
+import {Trivia} from '../../../../../../modules/database/entity/trivia.entity'
 
 export class PackageEntity implements Package {
   trivia: Trivia[]

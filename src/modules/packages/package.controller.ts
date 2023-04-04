@@ -14,8 +14,8 @@ import {
   IResponse,
   ResponseHttp,
 } from '~/common/responseHttp/responseHttp.entity'
+import {PackageEntity} from '../../new/ports/input/api/package/dto/package.entity'
 import {CreatePackageDto} from './dto/package.create.dto'
-import {PackageEntity} from './entity/package.entity'
 import {packageOutputEntity} from './entity/package.output.entity'
 import {PackageService} from './package.service'
 

@@ -6,7 +6,7 @@ import {
 } from '~/modules/database/entity/itemDetail.entity'
 import {Package} from '~/modules/database/entity/package.entity'
 import {Trivia} from '~/modules/database/entity/trivia.entity'
-import {PackageEntity} from './package.entity'
+import {PackageEntity} from '../../../new/ports/input/api/package/dto/package.entity'
 
 export class experienceEntity implements Experience {
   createdAt: Date

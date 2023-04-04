@@ -4,7 +4,10 @@ import {Authorized} from '~/common/auth/Authorized'
 import {CurrentUser} from '~/common/auth/CurrentUser'
 import {UserAuthentication} from '~/common/auth/models/UserAuthentication'
 import {QueryRequired} from '~/helpers/QueryRequired'
-import {ResponseHttp} from '../../common/responseHttp/responseHttp.entity'
+import {
+  IResponse,
+  ResponseHttp,
+} from '../../common/responseHttp/responseHttp.entity'
 import {PackageType} from '../infotravel/constants/constant'
 import {AvailbilityQueryDTO} from '../packages/dto/package.hotels.rooms.dto'
 import {CheckoutService} from './checkout.service'
@@ -24,10 +27,8 @@ export class CheckoutController {
     @QueryRequired('startDate') startDate: string,
     @QueryRequired('endDate') endDate: string,
     @QueryRequired('origin') origin: string,
-    @QueryRequired('originIata') originIata: string,
-    @QueryRequired('originType') originType: string,
     @QueryRequired('destination') destination: string,
-    @QueryRequired('adults') adults: string,
+    @QueryRequired('occupancy') occupancy: string,
     @Query('fields') fields: string,
   ) {
     return new ResponseHttp({
@@ -35,7 +36,7 @@ export class CheckoutController {
         startDate,
         endDate,
         origin: parseInt(origin),
-        adults: parseInt(adults),
+        occupancy: occupancy,
         destination: parseInt(destination),
         fields,
       }),
@@ -91,7 +92,7 @@ export class CheckoutController {
   async getAvailbility(
     @Query() availbilityQuery: AvailbilityQueryDTO,
     @CurrentUser() user: UserAuthentication,
-  ) {
+  ): Promise<ResponseHttp<IResponse>> {
     return await this.service.getPackageAvailbility({
       ...availbilityQuery,
       clientId: user.memberNumber,

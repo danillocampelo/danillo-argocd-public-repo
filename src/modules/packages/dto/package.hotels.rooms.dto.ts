@@ -6,31 +6,31 @@ export class AvailbilityQueryDTO {
     required: true,
     description: 'Package id in infotravel',
   })
-  id: string
+  id?: string
 
   @ApiProperty({required: true, example: '2022-02-10'})
-  startDate: string
+  startDate?: string
 
   @ApiProperty({required: true, example: '2022-02-20'})
-  endDate: string
+  endDate?: string
 
   @ApiProperty({required: true, description: 'Origin id'})
-  origin: string
+  origin: string | number
 
-  @ApiProperty({required: true, description: 'Origin Iata'})
-  originIata: string
+  @ApiProperty({required: false, description: 'Origin Iata'})
+  originIata?: string
 
-  @ApiProperty({required: true, description: 'Origin type'})
-  originType: string
+  @ApiProperty({required: false, description: 'Origin type'})
+  originType?: string
 
   @ApiProperty({
     required: true,
     description: '',
     example: 2,
   })
-  occupancy: any
+  occupancy?: any
 
-  destination?: string
+  destination?: number
   destinationType?: string
   clientId?: string
 }

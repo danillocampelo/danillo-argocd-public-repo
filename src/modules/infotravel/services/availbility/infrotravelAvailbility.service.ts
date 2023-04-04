@@ -1,5 +1,7 @@
 import {forwardRef} from '@nestjs/common'
 import {Inject, Injectable} from '@nestjs/common/decorators'
+import {isArray} from 'class-validator'
+import {verifyOccupancy} from '~/helpers/veryOccupancy'
 import {AvailbilityQueryDTO} from '~/modules/packages/dto/package.hotels.rooms.dto'
 import {PackageType} from '../../constants/constant'
 import {InfotravelService} from '../../infotravel.service'
@@ -7,11 +9,12 @@ import {
   PackageAvailResponse,
   PackageDetailsResponse,
 } from './entities/packageAvailbility.entity'
-import {isArray} from 'class-validator'
+import * as dayjs from 'dayjs'
 
 @Injectable()
 export class InfrotavelAvailbilityService {
   private readonly basePath = '/avail'
+
   constructor(
     @Inject(forwardRef(() => InfotravelService))
     private readonly infotravelService: InfotravelService,
@@ -23,9 +26,10 @@ export class InfrotavelAvailbilityService {
   async getPackageAvailbility(
     params: AvailbilityQueryDTO,
     packageType: PackageType = PackageType.HOTEL_FLIGHT,
-  ) {
+  ): Promise<PackageAvailResponse> {
     const queryParams = {
       start: params.startDate,
+      /* TODO: remove END param */
       end: params.endDate,
       origin: params.origin,
       originIata: params.originIata,
@@ -46,7 +50,7 @@ export class InfrotavelAvailbilityService {
       ocuppancyParam = `occupancy=${params.occupancy}`
     }
 
-    const path = `${this.basePath}/package/${packageType}?start=${queryParams.start}&end=${queryParams.end}&origin=${queryParams.origin}&originIata=${queryParams.originIata}&originType=${queryParams.originType}&destination=${queryParams.destination}&destinationType=${queryParams.destinationType}&packageId=${queryParams.packageId}&client=${queryParams.client}&${ocuppancyParam}`
+    const path = `${this.basePath}/package/${packageType}?start=${queryParams.start}&origin=${queryParams.origin}&destination=${queryParams.destination}&destinationType=${queryParams.destinationType}&packageId=${queryParams.packageId}&client=${queryParams.client}&${ocuppancyParam}&originIata=${queryParams.originIata}&originType=${queryParams.originType}`
 
     return await this.infotravelService.get<PackageAvailResponse>(path)
   }
@@ -67,7 +71,8 @@ export class InfrotavelAvailbilityService {
     coupon?: any
     client?: any
   }): Promise<any | {message: 'No availability'}> {
-    return await this.infotravelService._get(`/avail/hotel/`, params)
+    const searchParams = verifyOccupancy(params)
+    return await this.infotravelService._get(`/avail/hotel/`, searchParams)
   }
 
   async availbilityActivity(params: {
@@ -81,7 +86,8 @@ export class InfrotavelAvailbilityService {
     coupon?: any
     client?: any
   }): Promise<any | {message: 'No availability'}> {
-    return await this.infotravelService._get(`/avail/serviceOther/`, params)
+    const searchParams = verifyOccupancy(params)
+    return await this.infotravelService._get(`/avail/activity/`, searchParams)
   }
 
   async availbilityService(params: {
@@ -95,7 +101,11 @@ export class InfrotavelAvailbilityService {
     coupon?: any
     client?: any
   }): Promise<any | {message: 'No availability'}> {
-    return await this.infotravelService._get(`/avail/servicePackage/`, params)
+    const searchParams = verifyOccupancy(params)
+    return await this.infotravelService._get(
+      `/avail/servicePackage/`,
+      searchParams,
+    )
   }
 
   async availbilityTickets(params: {
@@ -109,7 +119,8 @@ export class InfrotavelAvailbilityService {
     coupon?: any
     client?: any
   }): Promise<any | {message: 'No availability'}> {
-    return await this.infotravelService._get(`/avail/ticket/`, params)
+    const searchParams = verifyOccupancy(params)
+    return await this.infotravelService._get(`/avail/ticket/`, searchParams)
   }
   async availbilityFlights(params: {
     start: any
@@ -127,7 +138,8 @@ export class InfrotavelAvailbilityService {
     coupon?: any
     client?: any
   }): Promise<any | {message: 'No availability'}> {
-    return await this.infotravelService._get(`/avail/flight/`, params)
+    const searchParams = verifyOccupancy(params)
+    return await this.infotravelService._get(`/avail/flight/`, searchParams)
   }
 
   async availbilityServiceOthers(params: {
@@ -141,7 +153,11 @@ export class InfrotavelAvailbilityService {
     coupon?: any
     client?: any
   }): Promise<any | {message: 'No availability'}> {
-    return await this.infotravelService._get(`/avail/serviceOther/`, params)
+    const searchParams = verifyOccupancy(params)
+    return await this.infotravelService._get(
+      `/avail/serviceOther/`,
+      searchParams,
+    )
   }
 
   async AvailbilityTransfers(params: {
@@ -160,6 +176,57 @@ export class InfrotavelAvailbilityService {
     coupon?: any
     client?: any
   }): Promise<any | {message: 'No availability'}> {
-    return await this.infotravelService._get(`/avail/transfer/`, params)
+    const searchParams = verifyOccupancy(params)
+    return await this.infotravelService._get(`/avail/transfer/`, searchParams)
+  }
+
+  async getPackageDefaultAvailability({
+    destionationType,
+    destinationId,
+    packageId,
+    clientId,
+    configService,
+  }) {
+    return this.getPackageAvailbility({
+      origin: configService.get('INFOTERA_PACKAGE_DEFAULT_ORIGIN') || 8253,
+      originIata:
+        configService.get('INFOTERA_PACKAGE_DEFAULT_ORIGIN_IATA') || 'GRU',
+      originType:
+        configService.get('INFOTERA_PACKAGE_DEFAULT_ORIGIN_TYPE') || 'A',
+      startDate:
+        configService.get('INFOTERA_PACKAGE_DEFAULT_START_DATE') ||
+        '2023-04-01',
+      occupancy: configService.get('INFOTERA_PACKAGE_DEFAULT_OCCUPANCY') || 2,
+      destination: destinationId,
+      destinationType: destionationType,
+      id: packageId,
+      clientId: clientId ?? configService.get('USER_INFOTRAVEL_DEFAULT'),
+    })
+  }
+
+  public createPackageDefaultAvailabilityParams({
+    destionationType,
+    destinationId,
+    packageId,
+    clientId,
+    configService,
+  }) {
+    const START_DATE_ADDITION = 2
+    return {
+      origin: configService.get('INFOTERA_PACKAGE_DEFAULT_ORIGIN') || 8253,
+      originIata:
+        configService.get('INFOTERA_PACKAGE_DEFAULT_ORIGIN_IATA') || 'GRU',
+      originType:
+        configService.get('INFOTERA_PACKAGE_DEFAULT_ORIGIN_TYPE') || 'A',
+      startDate:
+        dayjs().add(START_DATE_ADDITION, 'M').format() ||
+        configService.get('INFOTERA_PACKAGE_DEFAULT_START_DATE') ||
+        '2023-04-01',
+      occupancy: configService.get('INFOTERA_PACKAGE_DEFAULT_OCCUPANCY') || 2,
+      destination: destinationId,
+      destinationType: destionationType,
+      id: packageId,
+      clientId: clientId ?? configService.get('USER_INFOTRAVEL_DEFAULT'),
+    }
   }
 }

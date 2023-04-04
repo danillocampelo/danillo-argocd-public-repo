@@ -1,0 +1,116 @@
+{
+  "id": 109,
+  "name": "Copacabana RJ - Fairmont",
+  "title": "Cenários Inspiradores da Cidade Maravilhosa",
+  "description": "<p dir=\"ltr\" style=\"line-height: 1.8; text-align: justify; margin-top: 0pt; margin-bottom: 9pt;\"><span style=\"background-color: transparent; font-weight: 200; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; font-style: italic; font-family: Arial; font-size: small; color: rgb(102, 102, 102);\">Ao andar pelas orlas das praias de Copacabana e Ipanema, desenhadas por Burle Marx, é impossível não se apaixonar com vista para a Pedra do Corcovado, o Pão de Açúcar e o Cristo Redentor. Cidade do maior Carnaval do mundo, o Rio de Janeiro é capaz de unir arte, cultura e natureza. Após aproveitar o sol e o mar, nada como tomar uma água de coco ou fazer um passeio turístico pelo Museu do Amanhã, Instituto Moreira Salles e pela Casa Roberto Marinho. Outros locais encantadores que merecem uma visita são o Bairro de Santa Teresa e o Parque Lage. Ao visitar a Cidade Maravilhosa, não deixe de experimentar alguns dos pratos mais famosos da região, como a feijoada, tapioca e peixe assado. Para os amantes da noite, a cidade possui uma vida noturna agitada, repleta de bares e boates para você aproveitar até o amanhecer ouvindo músicas que vão desde o funk carioca até a bossa nova. </span></p><p style=\"line-height: 150%; margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; text-align: left; direction: ltr; unicode-bidi: embed; word-break: normal;\"><span id=\"docs-internal-guid-3a9414f3-7fff-1978-27f2-b9e34b6f9db4\" style=\"font-style: italic; font-family: Arial; font-size: small; color: rgb(102, 102, 102);\"></span></p><p dir=\"ltr\" style=\"line-height: 1.8; text-align: justify; margin-top: 0pt; margin-bottom: 15pt;\"><span style=\"background-color: transparent; font-weight: 200; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; font-style: italic; font-family: Arial; font-size: small; color: rgb(102, 102, 102);\">Sua estadia será no Fairmont, hotel de luxo localizado na praia de Copacabana onde os quartos possuem uma vista encantadora para o mar e para o Pão de Açúcar. Para uma experiência de relaxamento e beleza, você poderá visitar o Willow Stream Spa, localizado dentro do hotel. À noite, o jantar fica por conta do Cipriani, conceituado restaurante de culinária italiana. Já os drinks ficam por conta do Sky Lounge, um bar com vista panorâmica localizado no terraço do hotel. Através de sua localização privilegiada e estrutura luxuosa, o Fairmont Hotel é a estadia ideal para experienciar o melhor da cidade maravilhosa.</span></p><p style=\"font-size: 10pt; font-family: Arial, Verdana; font-style: normal; line-height: 150%; margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; text-align: left; direction: ltr; unicode-bidi: embed; word-break: normal;\"><span style=\"font-weight: bold; font-family: Arial; font-size: small; color: rgb(102, 102, 102);\"><br></span></p><p style=\"font-size: 10pt; font-family: Arial, Verdana; font-style: normal; line-height: 150%; margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; text-align: left; direction: ltr; unicode-bidi: embed; word-break: normal;\"><span style=\"font-weight: bold; font-family: Arial; font-size: small; color: rgb(102, 102, 102);\">Inclui:</span></p><div style=\"font-size: 10pt; font-family: Arial, Verdana; font-style: normal; line-height: 150%; margin-top: 0pt; margin-bottom: 0pt; margin-left: 0.31in; text-indent: -0.31in; text-align: left; direction: ltr; unicode-bidi: embed; word-break: normal;\"><span style=\"font-family: Arial; font-size: small; color: rgb(102, 102, 102);\">• Aéreo ida e volta (via GIG/SDU);</span></div><div style=\"font-size: 10pt; font-family: Arial, Verdana; font-style: normal; line-height: 150%; margin-top: 0pt; margin-bottom: 0pt; margin-left: 0.31in; text-indent: -0.31in; text-align: left; direction: ltr; unicode-bidi: embed; word-break: normal;\"><span style=\"font-family: Arial; font-size: small; color: rgb(102, 102, 102);\">• 03 noites de hospedagem com café da manhã;</span></div><div style=\"font-size: 10pt; font-family: Arial, Verdana; font-style: normal; line-height: 150%; margin-top: 0pt; margin-bottom: 0pt; margin-left: 0.31in; text-indent: -0.31in; text-align: left; direction: ltr; unicode-bidi: embed; word-break: normal;\"><span style=\"font-family: Arial; font-size: small; color: rgb(102, 102, 102);\">• Transfer para os trechos: aeroporto / hotel / aeroporto.</span></div><div style=\"font-size: 10pt; font-family: Arial, Verdana; font-style: normal; line-height: 150%; margin-top: 0pt; margin-bottom: 0pt; margin-left: 0.31in; text-indent: -0.31in; text-align: left; direction: ltr; unicode-bidi: embed; word-break: normal;\"><br></div>",
+  "observation": "",
+  "type": "HOTEL_FLIGHT_PACKAGE",
+  "roadMap": [
+    {
+      "sqDay": 1,
+      "name": "Chegada",
+      "description": "Voo com destino ao Rio de Janeiro. Recepção e traslado privativo ao hotel. Check-in disponível a partir das 15h00. Tarde livre para atividades independentes."
+    },
+    {
+      "sqDay": 2,
+      "name": "Revitalizando as energias",
+      "description": "Delicioso café da manhã. Dia livre para usufruir da belíssima estrutura do hotel e revitalizar suas energias na piscina de borda infinita com vista para o mar."
+    },
+    {
+      "sqDay": 3,
+      "name": "A cidade maravilhosa",
+      "description": "Café da manhã. Dia livre para atividades independentes, sugerimos aproveitar os serviços de spa, sauna, massagem e salão de beleza do SPA Willow Stream ou conhecer o Museu do Amanhã, a lagoa Rodrigo de Freitas e o Museu de Arte Moderna. Usufrua de toda a riqueza da região e eternize a cidade maravilhosa dentro de você."
+    },
+    {
+      "sqDay": 4,
+      "name": "Fim dos serviços",
+      "description": "Café da manhã, traslado ao aeroporto para voo de retorno. Check-out disponível até às 11h00."
+    }
+  ],
+  "images": [
+    {
+      "big": "//media.infotravel.com.br/image/upload/1C3D6FF850A3BADFD21468E61E7BC5A2.jpg",
+      "average": "//media.infotravel.com.br/image/upload/c_scale,h_200/1C3D6FF850A3BADFD21468E61E7BC5A2.jpg",
+      "small": "//media.infotravel.com.br/image/upload/c_scale,h_100/1C3D6FF850A3BADFD21468E61E7BC5A2.jpg"
+    },
+    {
+      "big": "//media.infotravel.com.br/image/upload/D2731E4B03073EB1253E61CAC67AD64E.jpg",
+      "average": "//media.infotravel.com.br/image/upload/c_scale,h_200/D2731E4B03073EB1253E61CAC67AD64E.jpg",
+      "small": "//media.infotravel.com.br/image/upload/c_scale,h_100/D2731E4B03073EB1253E61CAC67AD64E.jpg"
+    },
+    {
+      "big": "//media.infotravel.com.br/image/upload/3573B416F451313F4A35F22005DE589A.jpg",
+      "average": "//media.infotravel.com.br/image/upload/c_scale,h_200/3573B416F451313F4A35F22005DE589A.jpg",
+      "small": "//media.infotravel.com.br/image/upload/c_scale,h_100/3573B416F451313F4A35F22005DE589A.jpg"
+    },
+    {
+      "big": "//media.infotravel.com.br/image/upload/345100281367ED25F2E92C6AE1A2696D.jpg",
+      "average": "//media.infotravel.com.br/image/upload/c_scale,h_200/345100281367ED25F2E92C6AE1A2696D.jpg",
+      "small": "//media.infotravel.com.br/image/upload/c_scale,h_100/345100281367ED25F2E92C6AE1A2696D.jpg"
+    }
+  ],
+  "destinations": [
+    {
+      "destination": {
+        "id": 2732,
+        "name": "Rio de Janeiro, Região Sudeste, Brasil",
+        "type": "M",
+        "iataCodes": "RIO"
+      },
+      "packageServices": [
+        {
+          "name": "Transfer de Chegada e Saída do Aeroporto Santos Dumont para  hotéis na zona Sul do Rio de Janeiro - Privativo",
+          "type": "TRANSFER",
+          "includedType": "INCLUDED",
+          "day": 1,
+          "code": "4_1683",
+          "integrator": "EASYTRAVELSHOP - TRANSFER",
+          "provider": "EASY TRAVEL SHOP"
+        },
+        {
+          "name": "Transfer de Chegada e Saída do Aeroporto do Galeão para hotéis na zona Sul do Rio de Janeiro - Privativo",
+          "type": "TRANSFER",
+          "includedType": "INCLUDED",
+          "day": 1,
+          "code": "4_1684",
+          "integrator": "EASYTRAVELSHOP - TRANSFER",
+          "provider": "EASY TRAVEL SHOP"
+        },
+        {
+          "name": "Tour Cultura e Arte - Santa Teresa e Jardim Burle Marx - Compartilhado",
+          "type": "PACKAGE_SERVICES",
+          "includedType": "INCLUDED",
+          "day": 1,
+          "code": "6_1442",
+          "integrator": "EASYTRAVELSHOP - PASSEIO",
+          "provider": "EASY TRAVEL SHOP"
+        },
+        {
+          "name": "PLANO NACIONAL 50",
+          "type": "TRAVEL_INSURANCE",
+          "includedType": "OPTIONAL",
+          "code": "B51",
+          "integrator": "ASSISTCARD",
+          "provider": "ASSIST CARD"
+        },
+        {
+          "name": "PLANO NACIONAL 100",
+          "type": "TRAVEL_INSURANCE",
+          "includedType": "OPTIONAL",
+          "code": "B52",
+          "integrator": "ASSISTCARD",
+          "provider": "ASSIST CARD"
+        }
+      ],
+      "packageHotels": [
+        {
+          "id": 9944,
+          "name": "Fairmont Rio De Janeiro Copacabana",
+          "keyDetail": "OTk0NCMxMCM4MDIz"
+        }
+      ],
+      "days": 4,
+      "nights": 3
+    }
+  ]
+}

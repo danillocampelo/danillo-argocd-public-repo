@@ -14,8 +14,6 @@ export enum DetailType {
   DETAIL_2 = 2,
   DETAIL_3 = 3,
   DETAIL_TRIP = 4,
-  METAINFOS = 'metainfos',
-  INFORMATION_ITENS = 'informationItens',
 }
 
 @Entity('item_detail')
@@ -31,7 +29,9 @@ export class ItemDetail {
   icon: string
 
   @ManyToOne(() => Package, (Package) => Package.itemDetail, {
+    onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
+    orphanedRowAction: 'delete',
   })
   package: Package
 

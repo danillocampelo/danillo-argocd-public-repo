@@ -55,7 +55,7 @@ export class InfotravelService {
   public readonly searchEngine = new InfotravelSearchServiceEngine(this)
 
   onModuleInit() {
-    axiosRetry(this.http.axiosRef, {
+    axiosRetry(this.http.axiosRef as any, {
       retries: 3,
       retryDelay: (retryCount) => {
         return retryCount * 1000
@@ -122,14 +122,14 @@ export class InfotravelService {
 
   async _get<T = any>(path: string, params = {}): Promise<T> {
     try {
-      console.log(`[Fetching ${path}] with parameters `, params)
+      Logger.debug(`[Fetching ${path}] with parameters `, params)
       const data = await this.http.axiosRef.get(path, {
         params,
         timeout: 30000,
       })
       return data.data
     } catch (err) {
-      Logger.error(`[Fetching ${path}] Error: `, err)
+      Logger.error(`[Fetching ${path}] Error: ${err}`)
       throw new BadGatewayException(err?.message)
     }
   }
@@ -230,6 +230,7 @@ export class InfotravelService {
   async infoTravelSearchPackage(
     params: InfoTravelPackageAvailbilitySearchParams,
   ): Promise<InfoTravelPackageAvailbility | {message: 'No availability'}> {
+    // @TODO: remover
     const {
       start,
       occupancy,
@@ -241,13 +242,7 @@ export class InfotravelService {
     } = params
 
     return await this._get(`/avail/package/${params.packageType}`, {
-      origin,
-      originIata,
-      originType,
-      start,
-      occupancy,
-      destination,
-      destinationType,
+      ...params,
     })
   }
 
